@@ -1,0 +1,29 @@
+.weui-cell:before{border: 0;}
+
+
+/* 选择地址 */
+#address .add-add{display: flex;justify-content: space-between;align-items: center;}
+#address .add-icon{background: #3384FA;width: 40px;height: 40px;text-align: center;line-height: 40px;color: #fff;font-size: 18px;border-radius: 6px;}
+#address .add-txt{flex: 1;overflow: hidden;}
+
+
+/* 地址信息 */
+.add-info{display: flex;justify-content: space-between;align-items: center;}
+.add-info .info{flex: 1;overflow: hidden;}
+.add-info .info .name{line-height: 24px;}
+.add-info .info .add-detail{display: flex;}
+.add-info .info .add-detail .label{width: 45px;line-height: 20px;}
+.add-info .info .add-detail .name{flex: 1;overflow: hidden;line-height: 20px;}
+.pay_line image{width: 100%;display: flex;height: 2px;}
+
+
+/* 商品信息 */
+.pro-info .cart-tb{display: flex;padding: 20upx 30upx;}
+.pro-info .cart-tb .pro-img .img{width: 140upx;height: 140upx;display: flex;border-radius: 12upx;}
+.pro-info .pro-name{flex: 1;display: flex;align-content: space-between;flex-wrap: wrap;}
+
+
+/* 结算脚部 */
+#footer{height: 100upx;line-height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;display: flex;}
+#footer .f_left{color: #FF4351;flex: 1;}
+#footer .f_right{color: #fff;background: #FF4351;font-size: 18px;border-radius: 0;line-height: 100upx;}

@@ -1,0 +1,25 @@
+
+/* 头部 */
+.order-class{display: flex;}
+.order-class .nav-tab{height: 44px;line-height: 44px;text-align: center;font-size: 14px;color: #333;width: 100%;}
+.selected {color: #ff721f;border-bottom: 2px solid #ff721f;}
+
+
+/* 列表 */
+.pro_info{background: #fff;}
+.pro_info .order_date{height: 40px;line-height: 40px;display: flex;justify-content: space-between;}
+.pro_info .order_info{display: flex;}
+.pro_info .order_info .pro_img .img{width: 160upx;height: 160upx;display: flex;border-radius: 10upx;}
+.pro_info .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}
+
+
+.pro_info .pro_right{flex: 1;overflow: auto;width: 100%;display: flex;align-content: space-between;height: 160upx;flex-wrap: wrap;}
+
+
+.pro-qrcode.weui-cell:before{border: 0;}
+
+
+.pro_info .btn-item{display: flex;justify-content: flex-end;}
+.pro_info .btn-item .btn-nav{width: 90px;height: 30px;line-height: 29px;border: 0.5px #838383 solid;border-radius: 15px;color: #232325;font-size: 26upx;text-align: center;margin-left: 10px;display: block;}
+.pro_info .btn-item .btn-nav:last-child{border-color: #FE4543;color: #fff;line-height: 29px;color: #FE4543;}
+.pro_info .btn-item .obtn{border-color: #838383!important;color: #232325!important;}

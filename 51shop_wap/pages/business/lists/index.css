@@ -1,0 +1,7 @@
+.banner image{width: 100%!important;}
+
+.Bt_search{display: flex;align-items: center;align-items: center;background: #fff;padding: 20rpx 20rpx 0;}
+.Bt_search .searchbox{line-height: 72rpx;border-radius: 36rpx;flex: 1;margin-right: 20rpx;display: flex;align-items: center;}
+.Bt_search .search-input{flex: 1;padding-left: 10rpx;font-size: 30rpx;color: #333;}
+.Bt_search .pla-class{color: #999;}
+.Bt_search form .dxi-btn{display: flex;}

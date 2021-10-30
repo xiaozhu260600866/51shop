@@ -1,0 +1,25 @@
+.delicacy-list{
+	display: flex;justify-content: space-between;flex-direction: row;flex-wrap: wrap;box-sizing: border-box;padding-bottom: 20rpx;
+	.delicacy-container{
+		flex: 1;margin: 0 20rpx;
+		&:last-child {margin-left: 0;}
+		.delicacy-item {
+			width: 100%;margin-bottom: 20rpx;background: #fff;box-sizing: border-box;border-radius: 12rpx;overflow: hidden;
+			.img{
+				position: relative;
+				.cover{width: 100%;display: block;}
+				.tag{
+					position: absolute;bottom: 20rpx;left: 20rpx;background: rgba(0,0,0,0.5);font-size: 20rpx;color: #fff;display: flex;line-height: 1;padding: 12rpx 20rpx 12rpx 10rpx;align-items: center;border-radius: 20rpx;
+					.dxi-icon{font-size: 20rpx;padding-right: 10rpx;}
+					.type{padding-left: 10rpx;border-left: 1rpx rgba($color: #fff, $alpha: 0.5) solid;margin-left: 10rpx;}
+				}
+			}
+			.delicacy-info{
+				display: flex;flex-direction: column;justify-content: space-between;box-sizing: border-box;padding: 20rpx;position: relative;
+				.name{color: #2e2e2e;font-size: 28rpx;word-break: break-all;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;line-height: 1;font-weight: bold;}
+				.title{color: #666;font-size: 24rpx;word-break: break-all;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;line-height: 1;margin-top: 16rpx;}
+				.average{color: #888;font-size: 24rpx;line-height: 1;margin-top: 20rpx;}
+			}
+		}
+	}
+}

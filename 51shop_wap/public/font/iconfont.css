@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'iconfont';  /* Project id 1027217 */
+  src: url('//at.alicdn.com/t/font_1027217_o0p1cx8zfrh.woff2?t=1631844328468') format('woff2'),
+       url('//at.alicdn.com/t/font_1027217_o0p1cx8zfrh.woff?t=1631844328468') format('woff'),
+       url('//at.alicdn.com/t/font_1027217_o0p1cx8zfrh.ttf?t=1631844328468') format('truetype');
+}
+/* 3314024140@qq.com  dx3229010  456在线 */
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-left:before{content: "\e910";}/* 左 */
+.icon-right:before{content: "\e911";}/* 右 */
+.icon-n-right:before{content: "\e6ee";}/* 右 */
+.icon-top:before{content: "\e913";}/* 上 */
+.icon-bottom:before{content: "\e912";}/* 下 */
+.icon-home:before{content: "\e70d";}/* 首页 */
+.icon-home-full:before{content: "\e7e3";}/* 首页 */
+.icon-vip:before{content: "\e656";}/* 皇冠 */
+.icon-tel2:before{content: "\e6b8";}/* 电话 */
+.icon-hongbao:before{content: "\e613";}/* 红包 */
+
+.icon-off:before{content: "\e6e0";}/* 删除 */
+.icon-search:before{content: "\e615";}/* 搜索 */
+.icon-tel:before{content: "\e667";}/* 电话 */
+.icon-tel-o:before{content: "\e64f";}/* 电话 */
+.icon-phone:before{content: "\e67c";}/* 电话 */
+.icon-location:before{content: "\e4560";}/* 位置 */
+.icon-location-o:before{content: "\e456c";}/* 位置-空 */
+.icon-ypay:before{content: "\e643";}/* 翼支付 */
+.icon-share:before{content: "\e456e";}/* 分享 */
+.icon-shop-pay:before{content: "\e612";}/* 在线支付 */
+.icon-cart-full:before{content: "\e6ac";}/* 购物车-实 */
+.icon-feedback:before{content: "\e62c";}/* 留言-实 */
+.icon-order-delivery:before{content: "\e6dc";}/* 运送 */
+
+.icon-starno:before{content: "\e657";}/* 未收藏 */
+.icon-staryes:before{content: "\e62b";}/* 已收藏 */
+
+
+.icon-user-cart:before{content: "\e644";}/* 购物车 */
+.icon-user-coupon:before{content: "\e63a";}/* 平台优惠券 */
+.icon-user-coupon-cash:before{content: "\e607";}/* 线下现金券 */
+.icon-user-collection:before{content: "\e611";}/* 我的收藏 */
+.icon-user-address:before{content: "\e456c";}/* 收货地址 */
+.icon-user-receive:before{content: "\e692";}/* 领取优惠券 */
+.icon-user-integral:before{content: "\e698";}/* 积分商城 */
+.icon-user-group:before{content: "\e69d";}/* 我的拼团 */
+.icon-user-distribution:before{content: "\e605";}/* 经销商 */
+.icon-user-merchant:before{content: "\e64c";}/* 经销商 */
+.icon-user-qrcode:before{content: "\e456a";}/* 我的二维码 */
+.icon-user-vip:before{content: "\e606";}/* 会员中心 */
+.icon-user-supplier:before{content: "\e4600";}/* 供货商中心 */
+.icon-user-ziti:before{content: "\e456f";}/* 自提点 */
+.icon-user-tiaobao:before{content: "\e45e9";}/* 我的水票 */
+.icon-user-agency:before{content: "\e6f2";}/* 区域代理 */
+.icon-user-demand:before{content: "\f778";}/* 动态 */
+.icon-user-pay:before{content: "\e78d";}/* 我的付款 */
+.icon-user-carCoupon:before{content: "\e6f1";}/* 洗车券 */
+
+
+.icon-cart-del:before{content: "\e63f";}/* 购物车del */
+.icon-count-plus:before{content: "\e632";}/* 加号 */
+.icon-count-minus:before{content: "\e984";}/* 减号 */
+
+.icon-pay-no:before{content: "\e988";color: #E84335;}/* 支付失败 */
+.icon-pay-yes:before{content: "\e676";color: #09BB07;}/* 支付成功 */
+
+.icon-intergral-record:before{content: "\e569a";}/* 兑换记录 */
+.icon-pro-class:before{content: "\e65f";}/* 产品分类 */
+.icon-time:before{content: "\e4568";}/* 营业时间 */
+
+
+.icon-float-feedback-o:before{content: "\e69f";}/*  */
+.icon-float-tel-o:before{content: "\e6bb";}/*  */
+.icon-float-feedback:before{content: "\e62c";}/*  */
+.icon-float-tel:before{content: "\a606";}/*  */
+
+
+.icon-top-user:before{content: "\e6b5";}/* 顶部-个人中心 */
+.icon-top-home:before{content: "\e6b7";}/* 顶部-首页 */
+
+.icon-pro-service-o:before{content: "\f6dd";}/* 商品详情-客服-空 */
+
+
+/* 团长中心 */
+.icon-heads-scan:before{content: "\e600";}/* 扫码取货 */
+.icon-heads-code:before{content: "\e8a1";}/* 取货码 */
+.icon-heads-order:before{content: "\e63c";}/* 订单 */
+.icon-heads-achievement:before{content: "\e6cb";}/* 销售业绩 */
+.icon-heads-account:before{content: "\e683";}/* 查看流水 */
+.icon-heads-eyes-open:before{content: "\e602";}/* 开启 */
+.icon-heads-eyes-close:before{content: "\e601";}/* 关闭 */
+.icon-heads-cancel:before{content: "\e6e1";}/* 核销 */
+.icon-heads-profit:before{content: "\e623";}/* 收益 */
+.icon-heads-client:before{content: "\e6f4";}/* 客户 */
+.icon-heads-team:before{content: "\e630";}/* 团队 */
+.icon-heads-order-yes:before{content: "\e60e";}/* 完成订单 */
+
+.icon-demand-see:before{content: "\f677";}/* 查看 */
+.icon-demand-thumb:before{content: "\e871";}/* 点赞 */
+.icon-demand-thumb-fill:before{content: "\e870";}/* 点赞 */
+
+.icon-user-integral-sign:before{content: "\f301";}/* 签到 */
+
+.icon-hot-return:before{content: "\e622";}/* 爆品返现 */
+
+
+.icon-pshare-wechat:before{content: "\f607";color: #75C519;}/* 微信 */
+.icon-pshare-save:before{content: "\f608";color: #29AD35;}/* 保存 */
+
+
+.icon-business-pay:before{content: "\e631";}/* 微信支付 */
+
+.icon-:before{content: "\e";}/*  */

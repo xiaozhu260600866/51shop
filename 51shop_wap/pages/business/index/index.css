@@ -1,0 +1,18 @@
+
+.dis-header {text-align: center;position: relative;}
+.date-search{position: absolute;right: 10px;top: 5px;}
+.quit-nav{position: absolute;top: 5px;left: 10px;}
+
+
+.date-search .search-select .order-picker{height: 26px;line-height: 26px;color:#fff;}
+.date-search .search-select .iconfont{color:#fff;font-size: 12px;}
+.dis-header .item {color: rgba(255, 255, 255, 0.7);font-size: 15px;}
+.dis-header .num {color: rgba(255, 255, 255, 0.9);font-size: 40px;font-family: Arial;}
+.dis-header .Anav {display: inline-block;width: 80px;border-radius: 15px;border: 1px solid rgba(255, 255, 255, 0.7);color: rgba(255, 255, 255, 0.7);}
+.dis-header .Anav:hover {background: transparent;}
+
+.stuff-sec {display: flex;flex-wrap: wrap;}
+.stuff-sec .sec-group{width: 50%;border-right: 1px #e5e5e5 solid;border-bottom: 1px #e5e5e5 solid;box-sizing: border-box;text-align: center;padding: 30px 0;}
+.stuff-sec .sec-group:nth-child(2n) {border-right: none;}
+.stuff-sec .sec-group .img{width: 40px;height: 40px;margin-bottom: 15px;}
+.stuff-sec .sec-group .p {font-size: 16px;color: #353535;}

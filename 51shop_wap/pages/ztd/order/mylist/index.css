@@ -1,0 +1,41 @@
+/* 表格列表 */
+.list-table{border-width: 1px 0 0 1px;border-color: #ddd;border-style: solid;background: #fff;}
+.list-table .list-tr{display: flex;}
+.list-table .list-tr .list-th,.list-table .list-tr .list-td{border-width: 0 1px 1px 0;border-color: #ddd;border-style: solid;min-height: 36px;display: flex;align-items: center;padding: 5px;}
+.list-table .list-tr .list-th{line-height: 26px;justify-content: center;font-size: 14px;}
+.list-table .list-tr .list-td{line-height: 20px;font-size: 13px;color: #666;}
+.list-table .list-tr .list-name{}
+.list-table .list-tr .list-num{justify-content: center;}
+.list-table .list-count{background: #f9f9f9;}
+.list-table .list-count .list-td{font-size: 13px;color: #000;}
+.list-table .list-count .list-num{color: #ff721f;}
+
+.list-table .list-tr .list-name{width: 50%;}
+.list-table .list-tr .list-num{width: 25%;}
+
+.list-table .list-tr .list-td{position: relative;z-index: 2;background: #fff;}
+
+
+.proList{}
+.proList .pro-con{position: relative;}
+.proList .pro-con:before{content: "";display: block;position: absolute;left: 60rpx;bottom: 0;border-bottom: 2rpx #ddd solid;width: 100%;}
+.proList .pro-con:last-child{border-bottom: 2rpx #ddd solid;}
+.proList .pro-con:last-child:before{border-bottom: 0;}
+.proList .pl-line{height: 64rpx;line-height: 64rpx;display: flex;position: relative;}
+.proList .pl-line:before{content: "";display: block;position: absolute;top: 32rpx;left: 22rpx;border-top: 2rpx #ddd solid;width: 34rpx;}
+.proList .pl-name{width: 80%;font-size: 26rpx;color: #666;padding-left: 60rpx;position: relative;}
+.proList .pl-name:before{content: "";display: block;position: absolute;top: -34rpx;left: 20rpx;border-left: 2rpx #ddd solid;height: 68rpx;z-index: 1;}
+.proList .pl-num{width: 20%;font-size: 26rpx;color: #666;text-align: center;}
+
+
+/* 列表 */
+.pro_info{background: #fff;}
+.pro_info .order_date{height: 36px;line-height: 36px;display: flex;justify-content: space-between;}
+.pro_info .order_info{display: flex;}
+.pro_info .order_info .pro_img .img{width: 50px;height: 50px;display: flex;}
+.pro_info .order_info .txt{line-height: 20px;padding-left: 10px;flex: 1;overflow: hidden;}
+.pro_info .order_info .txt .price{color: #999;}
+.pro_info .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}
+
+.pro_info .btn-group{display: flex;justify-content: flex-end;}
+.pro_info .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #ddd solid;border-radius: 30px;color: #555;font-size: 12px;text-align: center;margin-left: 10px;}

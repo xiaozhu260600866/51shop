@@ -1,0 +1,38 @@
+/* 轮播图 */
+.banner {background-color: transparent;}
+.banner .swiper,.banner .swiper-item,.banner image{height: 360upx!important;width: 100%!important;}
+
+/* 信息 */
+.top_info{padding: 0 30upx;}
+.top_info .row{display: flex;justify-content: space-between;align-items: center;margin: 30upx 0;}
+.top_info .label{background-color: #FF4136;color: #fff;font-size: 28upx;width: 48upx;height: 48upx;line-height: 48upx;text-align: center;border-radius: 8upx;margin-right: 10upx;}
+.top_info .nav{background-color: #07c160;padding: 6upx 12upx;border-radius: 8upx;font-size: 28upx;color: #fff;}
+
+/* 详情 */
+.bus-info .right-box{color: #333;text-align: left;font-size: 30upx;}
+
+/* 公司简介 */
+.detail-show .con{text-align: justify;}
+.detail-show .con .img,.detail-show .con image,.detail-show .con img{width: 100%;}
+
+/* 现金券 */
+.busCoupon{position: relative;}
+.busCoupon .more-bg{background-image: linear-gradient(transparent, #fff);height: 100rpx;width: 100%;position: absolute;bottom: 0;left: 0;}
+.couponBox{max-height: 640rpx;}
+.couponBox .item_right{padding: 0 0 0 20rpx!important;}
+
+/* 福利产品 */
+.proBox{max-height: 1200rpx;}
+
+/* 码 */
+.code .title{text-align: center;padding: 20upx 30upx;font-size: 32upx;color: #333;line-height: 1.6;text-align: center;border-bottom: 1upx #eee solid;}
+.code_group{padding:20upx 20upx 30upx;text-align: center;}
+.code_group .code{width: 300upx;height: 300upx;display: flex;}
+
+/* 脚部 */
+.show-footer{position: fixed;bottom: 0;left: 0;width: 100%;display: flex;background-color: #fff;border-top: 1upx #f7f7f7 solid;z-index: 90;}
+.show-footer .litem{width: 100upx;text-align: center;}
+.show-footer .litem .iconfont{color: #333;font-size: 36upx;line-height: 60upx;}
+.show-footer .litem .name{font-size: 24upx;color: #333;line-height: 40upx;}
+.show-footer .right{flex: 1;display: flex;align-items: center;}
+.show-footer .ritem{text-align: center;background-color: #07c160;line-height: 80upx;color: #fff;font-size: 36upx;padding: 10upx 0;}

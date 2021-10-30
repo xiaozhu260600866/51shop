@@ -1,0 +1,26 @@
+.radioType>.weui-cell__hd{color: #666;font-size: 16px;}
+
+.m-input>._div{width: 100%;}
+.m-input .weui-cell{padding: 0!important;}
+.m-input .weui-cell_input{border-bottom: 0!important;}
+.m-input .weui-cell .weui-input{height: 30px;min-height: 30px;line-height: 30px;font-size: 20px;}
+.m-input input::-webkit-input-placeholder{font-size: 20px!important;}
+
+/* .pay-type>._div>.weui-cell{flex-wrap: wrap;padding-bottom: 0!important;}
+.pay-type>._div>.weui-cell>.weui-cell__hd{width: 100%!important;border-bottom: 1px #eee solid;padding-bottom: 12px;color: #666;}
+.pay-type .weui-check__label{width: 100%;padding: 10px 0!important;border-bottom: 1px #eee solid;}
+.pay-type .weui-check__label:last-child{border-bottom: 0;}
+.pay-type .weui-check__label .iconfont{display: inline-block;width: 30px;}
+.pay-type .weui-check__label .weui-cell__bd{color: #333!important;}
+ */
+
+.pay-type .weui-label{font-size: 16px;}
+
+.bankcard .weui-cell{padding: 10px 0;}
+.bankcard .weui-input{height: 30px;min-height: 30px;line-height: 30px;font-size: 16px;}
+.bankcard .weui-label{color: #666;font-size: 16px;}
+.bankcard ._picker{text-align: left;height: 30px;min-height: 30px;line-height: 30px;font-size: 16px;}
+.bankcard .picker{color: #333;font-size: 16px;}
+
+
+.radioType .weui-check__label .weui-cell__bd{font-size: 16px;}

@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 680922 */
+  src: url('//at.alicdn.com/t/font_680922_az4w2swd8uh.eot');
+  src: url('//at.alicdn.com/t/font_680922_az4w2swd8uh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_680922_az4w2swd8uh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_680922_az4w2swd8uh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_680922_az4w2swd8uh.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 会员中心 */
+.icon-right:before{content: "\e600";}/* 右 */
+
+.icon-user-cart:before{content: "\e602";}/* 购物车 */
+.icon-user-distribution:before{content: "\e605";}/* 经销商 */
+.icon-user-profit:before{content: "\e671";}/* 推广收益 */
+.icon-user-qrcode:before{content: "\e616";}/* 我的二维码 */
+.icon-user-name:before{content: "\e604";}/* 实名认证 */
+.icon-user-integral:before{content: "\e66e";}/* 积分商城 */
+.icon-user-store:before{content: "\e617";}/* 共享店家 */
+.icon-user-collection:before{content: "\e66c";}/* 我的收藏 */
+.icon-user-address:before{content: "\e603";}/* 收货地址 */
+.icon-user-quit:before{content: "\e60e";}/* 退出 */
+.icon-user-coupon:before{content: "\e63d";}/* 我的优惠券 */
+.icon-user-close:before{content: "\e624";}/* 关闭 */
+.icon-user-enter:before{content: "\e603";}/* 添加店铺 */
+
+.icon-cart-del:before{content: "\e631";}/* 删除 */
+
+.icon-count-plus:before{content: "\e613";}/* 加号 */
+.icon-count-minus:before{content: "\e715";}/* 减号 */
+
+.icon-cart-cart:before{content: "\e60f";}/* 加入购物车 */
+.icon-pay-no:before{content: "\e630";}/* 支付失败 */
+.icon-pay-yes:before{content: "\e652";}/* 支付成功 */
+.icon-index-recommend:before{content: "\e64f";}/* 推荐 */
+.icon-intergral-record:before{content: "\e635";}/* 兑换记录 */
+
+
+.icon-:before{content: "\e";}/*  */
+.icon-:before{content: "\e";}/*  */

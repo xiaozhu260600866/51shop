@@ -1,0 +1,60 @@
+/* 局元素 */
+.ugorup-box{border-radius: 24rpx;margin: 24rpx;background-color: #fff;overflow: hidden;}
+
+
+/* 头部 */
+.head-info{position: relative;}
+.head-bg .img{width: 100%;display: flex;}
+.utop{background: #33c45d;padding: 60rpx 30rpx 130rpx;}
+.utop .uinfo{display: flex;align-items: center;}
+.utop .uinfo .header-img .img{width: 120rpx;height: 120rpx;border-radius: 50%;border: 4rpx #fff solid;display: flex;}
+.utop .uinfo .info{line-height: 44rpx;flex: 1;overflow: hidden;}
+.utop .uinfo .info .group{display: flex;align-items: center;}
+.utop .r-nav .up-nav{border: 1rpx #fff solid;padding: 0 24rpx;border-radius: 30rpx;height: 56rpx;line-height: 54rpx;color: #fff;text-align: center;margin: 16rpx 0;}
+.utop .uinfo .gosign{height: 60rpx;line-height: 60rpx;border: 1rpx #fff solid;border-radius: 40rpx;text-align: center;padding: 0 30rpx;}
+.utop .login-nav{background-color: rgba(0,0,0,0.25);border-radius: 15px;}
+
+
+.ulist-group{display: flex;flex-wrap: wrap;}
+.ulist-group myform,.ulist-group>section{display: block;width: 25%;}
+.ulist-group .ulist-item{text-align: center;padding: 16rpx 10rpx;}
+.ulist-group .item-icon{height: 60rpx;line-height: 60rpx;position: relative;width: 48rpx;margin: 0 auto;}
+.ulist-group .item-icon .iconfont{font-size: 40rpx;}
+.ulist-group .item-icon .num{position: absolute;top: -16rpx;right: -16rpx;border-radius: 50%;width: 36rpx;line-height: 32rpx;text-align: center;border: 2rpx solid red;font-size: 20rpx;color: red;background-color: #fff;}
+.ulist-group .item-name{font-size: 30rpx;height: 40rpx;line-height: 40rpx;color: #555;}
+
+
+/* 统计 */
+.head-count{display: flex;margin-top: -70rpx;position: relative;z-index: 1;}
+.head-count myform,.head-count>section{width: 100%;}
+.head-count .c-item{text-align: center;padding: 30rpx 0;position: relative;}
+.head-count .c-item::before{content: '';display: block;position: absolute;top: 50%;right: 0;margin-top: -32rpx;width: 1rpx;height: 64rpx;background: #eee;}
+.head-count .c-item:last-child::before{display: none;}
+.head-count .num{line-height: 48rpx;font-size: 40rpx;}
+.head-count .num .unit{font-size: 24rpx;}
+.head-count .name{line-height: 40rpx;font-size: 28rpx;}
+
+
+/* 订单标题 */
+.black{border-radius: 24rpx;margin: 24rpx;}
+.black-title{display: flex;justify-content: space-between;padding: 20rpx 30rpx;align-items: center;}
+.black-title .name{font-size: 30rpx;line-height: 48rpx;font-weight: bold;color: #333;}
+.ugorup-box .black-title{padding: 16rpx 30rpx;}
+
+
+/* 订单按钮 */
+.unav{width: 100%;display: flex;}
+.unav myform,.unav section{width: 100%;}
+.unav .item{width: 100%;text-align: center;margin: 20rpx 0 40rpx;}
+.unav .item .unav-tab{position: relative;}
+.unav .item .unav-tab .num{position: absolute;width: 36rpx;border-radius: 50%;text-align: center;color: white;background: #FA4444;left: 46rpx;line-height: 36rpx;font-size: 20rpx;}
+.unav .item .unav-tab{height: 60rpx;width: 60rpx;margin: 0 auto;line-height: 60rpx;}
+.unav .item .unav-tab .icon{width: 80%;height: 80%;display: flex;margin: 0 auto;}
+.unav .item .nav-txt{line-height: 40rpx;font-size: 26rpx;color: #666;}
+
+
+/* 现金券 */
+.busCoupon{position: relative;}
+.busCoupon .more-bg{background-image: linear-gradient(transparent, #fff);height: 100rpx;width: 100%;position: absolute;bottom: 0;left: 0;}
+.couponBox{max-height: 640rpx;}
+.couponBox .item_right{padding: 0 0 0 20rpx!important;}

@@ -1,0 +1,40 @@
+
+/* 头部 */
+.order-class{display: flex;}
+.order-class .nav-tab{height: 44px;line-height: 44px;text-align: center;font-size: 14px;color: #333;width: 100%;}
+.selected {color: #ff721f;border-bottom: 2px solid #ff721f;}
+
+
+.od-lists .od-row{line-height: 20px;padding: 10px 15px;color: #666;display: flex;justify-content: space-between;border-bottom: #f2f2f2 solid 1px;font-size: 15px;}
+.od-lists .od-row .llabel{width: 90px;}
+.od-lists .od-row .rvalue{flex: 1;overflow: hidden;text-align: right;}
+
+
+
+/* 列表 */
+.pro_info{background: #fff;}
+.pro_info .order_date{height: 46px;line-height: 46px;display: flex;justify-content: space-between;}
+.pro_info .order_date .time checkbox{zoom: 75%;display: flex;}
+.pro_info .order_info{display: flex;}
+.pro_info .order_info .pro_img .img{width: 160upx;height: 160upx;display: flex;border-radius: 10upx;}
+.pro_info .order_count{height: 40px;line-height: 40px;display: flex;justify-content: flex-end;}
+.pro_info .pro_right{flex: 1;overflow: auto;width: 100%;display: flex;align-content: space-between;height: 160upx;flex-wrap: wrap;}
+
+
+/* 按钮 */
+.pro_info .btn-group{display: flex;justify-content: flex-end;}
+.pro_info .btn-item .btn-nav{width: 80px;height: 30px;line-height: 28px;border: 1px #33c45d solid;border-radius: 6px;color: #fff;font-size: 26upx;text-align: center;margin-left: 10px;background: #33c45d;border-radius: 30px;}
+
+/* 结算 */
+#cartfooter{height: 50px;line-height: 50px;position: fixed;left: 0;bottom: 0;width: 100%;background:#fff;z-index:9;display: flex;}
+#cartfooter .lInfo{display: flex;justify-content: space-between;flex: 1;width: 100%;overflow: hidden;}
+#cartfooter .lInfo .group{display: flex;align-items: center;}
+#cartfooter .zheng{padding: 0 5px 0 10px;height: 50px;display: flex;align-items: center;}
+#cartfooter .zheng checkbox{display: flex;}
+#cartfooter .submit{width: 100px;text-align: center;height: 50px;line-height: 50px;border-radius: 0;}
+
+
+.de-lists{font-size: 30upx;line-height: 1.4;}
+.de-lists .item{margin: 24upx;border-radius: 12upx;background-color: #fff;}
+.de-lists .row{padding: 20upx 30upx;display: flex;align-items: center;justify-content: space-between;border-bottom: 1upx #eee solid;}
+.de-lists .row:last-child{border-bottom: 0;}

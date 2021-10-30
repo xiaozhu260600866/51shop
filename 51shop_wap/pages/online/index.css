@@ -1,0 +1,15 @@
+page{padding-bottom: 0!important;}
+
+
+.ass-title{display: flex;justify-content: space-between;}
+.ass-title .name{line-height: 16px;height: 16px;border-left: 4px #FF5400 solid;padding-left: 8px;}
+.ass-title .icon{width: 80px;text-align: right;line-height: 16px;height: 16px;}
+/* 轮播 */
+.swiper_box image{width: 100%;}
+.business .title{display: flex;justify-content: space-between;align-items: center;}
+
+
+
+.box-title .name{position: relative;display: inline-block;}
+.box-title .name:before{content: '';display: block;position: absolute;top: 50%;margin-top: -1px;height: 2px;width: 16px;background: #999;left: -24px;}
+.box-title .name:after{content: '';display: block;position: absolute;top: 50%;margin-top: -1px;height: 2px;width: 16px;background: #999;right: -24px;}
