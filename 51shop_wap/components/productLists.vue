@@ -110,46 +110,49 @@
 			</view>
 		
 			<!-- 横排列表 -->
-			<view class="pro_lists" v-if="type == 2">
-				<view class="porducts">
-					<view v-for="(item,key) in data.lists.data">
-						<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="gotoProduct(item)">
-							<view slot="content" class="pro_item">
-								<view class="cms_cover">
-									<img class="img" :src="item.firstCover" mode="aspectFill" />
-								</view>
-								<view class="pro_info">
-									<view class="w-b100">
-										<view class="cms_title Aname fs-17 fc-0">{{ item.name }}</view>
-										<view class="cms_type">
-											<span class="tig" v-for="tag in item.getTag">{{tag}}</span>
-										</view>
-									</view>
-									<view class="cms_price flex-between w-b100">
-										<view class="flex1 pr10 nowrap fc-9">
-											<span class="fs-12 price">￥</span>
-											<span class="fs-20 price">{{item.price.split(".")[0]}}</span>
-											<span class="fs-12 price">.{{item.price.split(".")[1]}}</span>
-										</view>
-										<view class="fc-9 pl5 lh-20" v-if="!item.wechat_card_id">
-											<span class="fs-12">已售</span>
-											<span class="fs-12 Arial">{{ item.self_num_ + item.self }}</span>
-											<span class="fs-10 plr3">|</span>
-											<span class="fs-12">剩余</span>
-											<span class="fs-12 Arial">{{item.num}}</span>
-										</view>
+			<view class="pro_crosswise" v-if="type == 2">
+				<block v-for="(item,key) in data.lists.data">
+					<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="gotoProduct(item)">
+						<view slot="content" class="pro_item">
+							<view class="cms_cover">
+								<img class="img" :src="item.firstCover" mode="aspectFill" />
+							</view>
+							<view class="pro_info">
+								<view class="w-b100">
+									<view class="cms_title fs-15 nowrap">{{ item.name }}</view>
+									<!-- <view class="cms_type">
+										<span class="tag" v-for="tag in item.getTag">{{tag}}</span>
+									</view> -->
+									<view class="cms_city fs-13 fc-9 lh-1 mt5">
+										<text class="dxi-icon dxi-icon-location-fill fs-12 pr5"></text>
+										<text class="area">{{item.takeMerchant.userInfo.area}}</text>
 									</view>
 								</view>
-								<view class="buy_out" v-if="item.num <= 0">
-									<image class="img" :src="getSiteName() +'/images/wap/buy_out.png'"></image>
+								<view class="cms_price flex-end w-b100 lh-1">
+									<view class="pr10 nowrap fc-9">
+										<text class="fs-12 price">￥</text>
+										<text class="fs-20 price">{{item.price.split(".")[0]}}</text>
+										<text class="fs-12 price">.{{item.price.split(".")[1]}}</text>
+									</view>
+									<view class="oldprice fs-12 fc-9 pb3">￥{{item.new_price}}</view>
+									<!-- <view class="fc-9 pl5 lh-20" v-if="!item.wechat_card_id">
+										<span class="fs-12">已售</span>
+										<span class="fs-12 Arial">{{ item.self_num_ + item.self }}</span>
+										<span class="fs-10 plr3">|</span>
+										<span class="fs-12">剩余</span>
+										<span class="fs-12 Arial">{{item.num}}</span>
+									</view> -->
 								</view>
 							</view>
-						</myform>
-					</view>
-				</view>
+							<view class="buy_out" v-if="item.num <= 0">
+								<image class="img" :src="getSiteName() +'/images/wap/buy_out.png'"></image>
+							</view>
+						</view>
+					</myform>
+				</block>
 			</view>
 			<!-- 横排列表2,只传入data -->
-			<view class="pro_lists" v-if="type == 4">
+			<view class="pro_crosswise" v-if="type == 4">
 				<view class="porducts">
 					<view v-for="(item,key) in data">
 						<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="gotoProduct(item)">
@@ -290,18 +293,15 @@
 	/* 竖排列表*/
 	
 	/* 横排列表 */
-	.pro_lists .pro_item,.pro_lists .pro_item myform{background: #fff;box-sizing:border-box;display: flex;padding: 15px;border-bottom: 1px #eee solid;position: relative;}
-	.pro_lists .cms_cover{padding-right: 20upx;position: relative;}
-	.pro_lists .cms_cover .img{width: 280upx;height: 280upx;display: flex;}
-	.pro_lists .pro_info{width: 100%;flex: 1;overflow: hidden;display: flex;flex-wrap: wrap;align-content: space-between;}
-	.pro_lists .cms_title{color: #333;line-height: 40upx;width: 100%;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
-	.pro_lists .cms_type{margin-top: 20upx;display: flex;flex-wrap: wrap;}
-	.pro_lists .cms_type .tig{font-size: 24upx;color: #fff;padding: 0 16upx;border-radius: 6upx;display: inline-block;height: 40upx;line-height: 40upx;margin: 0 10upx 10upx 0;background-color: #33c45d;}
-	.pro_lists .self_num{display: inline-block;}
-	.pro_lists .cms_title2{line-height: 40upx;height: 80upx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;width: 100%;}
-	.pro_lists .cms_mark{color: #999;line-height: 36upx;height: 72upx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;width: 100%;}
-	.pro_lists .cms_price{line-height: 40upx;align-items: flex-end;}
-	.pro_lists .cms_price .cprice{padding: 8upx 0 0 10upx;line-height: 32upx;}
+	.pro_crosswise .pro_item,.pro_crosswise .pro_item myform{background: #fff;display: flex;padding: 15px;position: relative;margin-bottom: 18rpx;}
+	.pro_crosswise .cms_cover{padding-right: 20upx;position: relative;}
+	.pro_crosswise .cms_cover .img{width: 200upx;height: 200upx;display: flex;}
+	.pro_crosswise .pro_info{width: 100%;flex: 1;overflow: hidden;display: flex;flex-wrap: wrap;align-content: space-between;}
+	.pro_crosswise .cms_title{color: #333;line-height: 40upx;width: 100%;}
+	.pro_crosswise .cms_type{margin-top: 20upx;display: flex;flex-wrap: wrap;}
+	.pro_crosswise .cms_type .tag{font-size: 24upx;color: #fff;padding: 0 16upx;border-radius: 6upx;display: inline-block;height: 40upx;line-height: 40upx;margin: 0 10upx 10upx 0;background-color: #33c45d;}
+	.pro_crosswise .cms_price{line-height: 40upx;align-items: flex-end;}
+	.pro_crosswise .oldprice{text-decoration: line-through;}
 	.pro_info{position: relative;z-index: 2;}
 	.pro_info .pro-cart{position: absolute;right: 0;bottom: 48upx; width: 60upx;height: 60upx;line-height: 60upx;text-align: center;border-radius: 50%;
 		background: -webkit-linear-gradient(#5dfd8c, #33c45d); /* Safari 5.1 - 6.0 */
@@ -309,8 +309,8 @@
 		background: -moz-linear-gradient(#5dfd8c, #33c45d); /* Firefox 3.6 - 15 */
 		background: linear-gradient(#5dfd8c, #33c45d); /* 标准的语法 */
 	}
-	.pro_lists .buy_out{position: absolute;top: 0;right: 0;width: 200upx;height: 200upx;z-index: 1;}
-	.pro_lists .buy_out .img{width: 100%;height: 100%;display: flex;}
+	.pro_crosswise .buy_out{position: absolute;top: 0;right: 0;width: 200upx;height: 200upx;z-index: 1;}
+	.pro_crosswise .buy_out .img{width: 100%;height: 100%;display: flex;}
 	/* 横排列表 */
 	
 	

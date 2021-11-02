@@ -2,10 +2,6 @@ page{position: relative;padding-bottom: 0!important;}
 page,scroll-view{height: 100%;}
 
 
-/* 产品轮播 */
-.show_banner{}
-.show_banner image{width: 100%;}
-
 .brand-nav .item{width: 33.333%;}
 .brand-nav .nav{padding: 16upx 0;border: 2upx #ddd solid;border-radius: 6upx;color: #666;text-align: center;}
 .brand-nav .cur{background: #33c45d;border-color: #33c45d;color: #fff;}

@@ -1,174 +1,205 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<div v-if="data.show">
-			<div class="show_banner bg-f" id="arrowTop">
-				<myswiper :lists="data.covers" purl="product"></myswiper>
-			</div>
-			<div class="pro_infor bg-f pt10" v-if="data.product">
-				<div class="pro_name fs-16 plr15">{{data.product.name}}</div>
-				<div class="cms_price plr15 pt5">
-					<p class="saleprice fs20 float_l">￥{{data.product.fclass == 84 ? '0.00':data.product.price}}</p>
-					<p class="cprice fs-13 float_l" v-if="data.product.new_price">￥{{data.product.new_price}}</p>
-				</div>
-				<div class="reward mlr15 ptb10 bd-te mt5" v-if="data.dis && data.product.fclass != 84 && data.product.fclass !=105 && data.product.fclass !=106 && !data.product.merchantuser_userid">
-					<p class="fs-13 fc-6">一级奖励：<span class="Arial"><span v-if="data.product.firstDisPrice.type == 0">{{ data.product.firstDisPrice.ratio }}%</span>(￥{{ data.product.firstDisPrice.price }})</span></span></p>
-
-					<!-- 	<p class="fs-13 fc-6">二级奖励：<span v-if="data.product.secondDisPrice.type == 0">{{ data.product.secondDisPrice.ratio }}%</span>(￥{{ data.product.secondDisPrice.price }})</span></p>  -->
-				</div>
-				<div class="other-info fs-12 plr15 pb8" v-if="data.product.fclass != 84 && data.product.fclass !=105">
-					<div class="info-item" v-if="data.product.yunfei !='0.00'">运费：{{ data.product.yunfei == 0 ? '免运费' : data.product.yunfei }}</div>
-					<div class="info-item" v-else></div>
-					<div class="info-item">已售<span class="Arial">{{ data.product.self_num_  + data.product.self}}</span><span class="plr3">|</span>剩余<span class="Arial">{{ data.product.num }}</span></div>
-				</div>
-				<div class="brand-nav p10 flex" v-if="data.package">
-					<p :class="['nav','w-b33','mlr5','fs-15',ruleform.pay_method == 1 ? 'cur': '']" @click="ruleform.pay_method = 1">现金</p>
-					<p :class="['nav','w-b33','mlr5','fs-15',ruleform.pay_method == 2 ? 'cur': '']" @click="ruleform.pay_method = 2">使用套票</p>
-				</div>
-				<div class="brand-nav plr10 pb10 flex flex-wrap" v-if="data.product.fclass == 105">
-					<div class="item p5" v-for="v in data.brand">
-						<p :class="['nav','fs-15',ruleform.brand == v.label ? 'cur': '']" @click="changeBrand(v.label)">{{ v.label }}</p>
-					</div>
-				</div>
-				<!-- <weui-input v-model="ruleform.brand" myclass="text" name="brand" datatype="require" label="桶装水品牌" placeholder="请选择品牌" changeField="label" type="select" :data="data.brand" v-if="data.product.fclass == 105"></weui-input>  -->
-			</div>
-			
-			<div class="buy-num plr15 ptb10 flex-between bg-f mt10" v-if="!data.product.hidd_buy_num  && data.product.fclass != 84 && ruleform.pay_method == 1">
-				<div class="fs-15 lh-30">选购数量</div>
-			
-				<tui-numberbox :value="num" @change="change" :max="data.product.fclass == 160 ? 1 : 11000"></tui-numberbox>
-			</div>
-			<p class="buy-num plr15 ptb10 flex-between bg-f mt10 fs-15 lh-30" v-if="data.product.fclassArr.length && data.product.fclassArr[0] == 238">邮件寄递合作服务商：中国邮政</p>
-			
-			<contact myclass="mt10"></contact>
-
-			<div class="pro_title mt10 bg-f" v-if="ruleform.pay_method == 1">
-				<div class="title-item" @click="showEvaluate=false">
-					<span :class="!showEvaluate ? 'cur' :''">商品详情</span>
-				</div>
-				<div class="title-item" @click="showEvaluate=true" v-if="data.product.fclass !=105">
-					<span :class="showEvaluate ? 'cur' : ''">评价</span>
-				</div>
-			</div>
-			<div :class="['pro-content','bg-f',ruleform.pay_method == 1 ? '': 'mt10']" v-if="!showEvaluate && data.product ">
-				<div class="pro-con-main">
-					<div class="img-item" v-for="(item,index2) in product_cover">
-						<image :src="getSiteName + '/upload/images/product/'+item " mode="aspectFill" @click="previewImage(item,'product')"></image>
-					</div>
+		<view class="pb60" v-if="data.show">
+			<view class="show_banner bg-f">
+				<view class="banner_swiper">
+					<myswiper :data="data.covers" :tbPadding="0" :lrPadding="0" :bdR="0"></myswiper>
+				</view>
+				<view class="member">
+					<swiper vertical autoplay circular interval="3000" class="member_swiper">
+						<swiper-item v-for="(item,index) in memeber" :key="index" class="items">
+							<view class="item">
+								<view class="avatar">
+									<image class="head" :src="item.headerPic"></image>
+								</view>
+								<view class="name">{{item.name.split('')[0]}}{{item.name.split('')[1]}}**刚刚查看了该产品</view>
+							</view>
+						</swiper-item>
+					</swiper>
+				</view>
+			</view>
+			<view class="countdown-row main-bg fc-white">
+				<view class="left flex-middle">
+					<text class="iconfont icon-pro-time pr5"></text>
+					<image class="img" mode="widthFix" src="/static/time-limit.png"></image>
+				</view>
+				<view class="countdown flex-middle">
+					<view class="text pr3 fs-13">距离结束还剩</view>
+					<tui-countdown :time="timeList" bcolor="#fff" bgcolor="#fff" colonColor="#fff" color="#d30802"
+					 :height="32" :width="36"></tui-countdown>
+				</view>
+			</view>
+			<view class="show_info pt20 plr15 bg-f" v-if="data.product">
+				<view class="name fs-17 fw-bold">{{data.product.name}}</view>
+				<view class="count fs-12 flex-between flex-baseline lh-1 mt10">
+					<view class="left fc-9 flex-baseline">
+						<view class="price pr5">￥<text class="fs-24">{{data.product.price}}</text></view>
+						<view class="price_old num pr10" v-if="data.product.new_price">￥{{data.product.new_price}}</view>
+						<view class="sale" v-if="data.product.self_num || data.product.self_num_">已售
+							<text class="Arial">{{data.product.self_num + data.product.self_num_}}</text>份</view>
+					</view>
+					<view class="right fc-4">
+						<text class="dxi-icon dxi-icon-praise-fill main-color pr5 fs-11"></text>
+						<text class="Arial">424</text>
+						<text class="txt">人喜欢</text>
+					</view>
+				</view>
+				<view class="labelG ptb15">
+					<dx-tag size="small" myclass="mr5" hollow v-for="item in data.product.getTag" >#{{item}}</dx-tag>
+				</view>
+			</view>
+			<view class="show_content mt12">
+				<dx-tabs :tabs="[
+					{value: 0,name: '商家信息'},
+					{value: 1,name: '图文详情'},
+					{value: 2,name: '购买须知'},
+					{value: 3,name: '精选推荐'}
+				]" :height="100" selectedColor="#333" color="#999" sliderBgColor="#d30802" :sliderWidth="60" :size="30" :selectedSize="30"></dx-tabs>
+				<!-- <view class="show_tabs">
+					<view class="item cur">商家信息</view>
+					<view class="item">图文详情</view>
+					<view class="item">购买须知</view>
+					<view class="item">精选推荐</view>
+				</view> -->
+				<view id="show01" class="show_content_sec show_content_sec01">
+					<view class="flow">
+						<view class="type">团购券</view>
+						<view class="path">立即抢购</view>
+						<view class="path">商家确认</view>
+						<view class="path">到店使用</view>
+					</view>
+					<view class="sec_title">
+						<view class="name">资源信息</view>
+					</view>
+					<view class="sec-chunk" @click="location(merchant.location_x,merchant.location_y,merchant.address)">
+						<view class="name fs-15 fw-bold">{{merchant.company_name}}</view>
+						<view class="row">
+							<view class="icon dxi-icon dxi-icon-time"></view>
+							<view class="txt">营业时间：
+							<text class="Arial">{{merchant.start_hour}}-{{merchant.end_hour}}</text></view>
+						</view>
+						<view class="row">
+							<view class="icon dxi-icon dxi-icon-location"></view>
+							<view class="txt">{{merchant.address}} | 距您步行<text class="Arial">20km</text>以上</view>
+						</view>
+					</view>
+				</view>
+				<view id="show02" class="show_content_sec show_content_sec02">
 					<u-parse :content="data.product.content" />
-				</div>
-			</div>
-			<div class="evalute pb50 bd-be" v-if="showEvaluate">
-				<div class="evalute-item p10 bg-f bd-be" v-for="v in data.suggestLists">
-					<div class="u-info">
-						<div class="u-info-box">
-							<div class="u-img"><img class="img" :src="v.getUser.headimgurl"></div>
-							<div class="u-name pl10">
-								<p class="name lh20 fs-14">{{ v.getUser.nickname }}</p>
-								<p class="fs-14 fc-6" v-if="v.suggestStatus == 1">好评</p>
-								<p class="fs-14 fc-6" v-if="v.suggestStatus == 2">中评</p>
-								<p class="fs-14 fc-6" v-if="v.suggestStatus == 3">差评</p>
-							</div>
-							<div class="r-time Arial fs-12 fc-9 pl10">{{ v.created_at }}</div>
-						</div>
-					</div>
-					<div class="u-con pt10 plr15">
-						<p class="p">{{ v.suggestContent1?v.suggestContent1:'该用户没有填写评价内容' }}</p>
-						<div class="image-group">
-							<div class="img-item" v-for="(item,index2) in v.getSuggestLogo">
-								<image :src="getSiteName + '/upload/images/order/'+item " mode="aspectFill"></image>
-							</div>
-						</div>
-					</div>
-					<div class="u-con pb10 mlr15" v-if="v.suggestStatus ==2">
-						<p class="fs-13 again mtb15 pl8 font_bold">追评 <span class="Arial">{{ v.updated_at }}</span></p>
-						<p class="p" v-if="v.suggestContent2.length">{{ v.suggestContent2 }}</p>
-						<div class="image-group">
-							<div class="img-item" v-for="(item,index2) in v.getSuggestLogo2">
-								<image :src="getSiteName + '/upload/images/order/'+item " mode="aspectFill"></image>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="data-con" v-if="data.suggestLists.length == 0">
-					<p class="fs-12 fc-9 p10 text-center">暂无评价</p>
-				</div>
-			</div>
-			<view class="pro_footer"></view>
-			<info :productInfo="data.productInfo" @callback="infoCallBack" ref="productInfo" :product="data.product"></info>
-			<div id="show_footer" v-if="data.product.fclass != 84 && ruleform.pay_method == 1 && data.product.fclass != 109 && data.product.fclass != 110 ">
-				<div class="left left_w40 plr8 bd-te">
-					<button class="btn-item" hover-class="none" @click="goto('/pages/index/main',2)"><!-- v-if="data.product.type != 1" -->
-						<p class="iconfont icon-home"></p>
-						<p class="txt">首页</p>
+				</view>
+				<view id="show03" class="show_content_sec show_content_sec03">
+					<view class="sec_title">
+						<view class="name">购买须知</view>
+						<view class="tagG">
+							<view class="tag">随时预约</view>
+							<view class="tag">不可退</view>
+						</view>
+					</view>
+					<view class="content">
+						<view class="item">
+							<view class="ltxt">有效期</view>
+							<view class="rtxt">2021.10.20 至 2021-12-31 23:59:59 </view>
+						</view>
+						<view class="item">
+							<view class="ltxt">单次使用</view>
+							<view class="rtxt">每次使用1张</view>
+						</view>
+						<view class="item">
+							<view class="ltxt">适用范围</view>
+							<view class="rtxt">全场通用</view>
+						</view>
+						<view class="item">
+							<view class="ltxt">退改说明</view>
+							<view class="rtxt">特惠产品，下单成功后，商家不支持退改，敬请见谅 </view>
+						</view>
+						<view class="item">
+							<view class="ltxt">使用说明</view>
+							<view class="rtxt">1、下单成功后您将会获得订单二维码或验证码，请截屏妥善保存。<br>2、到店后主动向服务员出示该二维码，服务员扫码验证使用</view>
+						</view>
+						<view class="item">
+							<view class="ltxt">注意事项</view>
+							<view class="rtxt">1、不兑现、不找零，店内无包间，仅限堂食，不提供餐前外带，餐毕未吃完可打包，打包费详情请咨询商家；<br>2、用户不可同时享受商家其他优惠，酒水饮料等问题，请致电商家咨询，以商家反馈为准使用优惠券购买付款，有效期以优惠券规则为准；<br>3、停车位收费标准：详情咨询商家，<br>4、发票问题请询问商家，消费高峰期可能需要等位</view>
+						</view>
+					</view>
+				</view>
+				<view id="show04" class="show_content_sec show_content_sec04">
+					<view class="sec_title">
+						<view class="name">精选推荐</view>
+					</view>
+					<proLists :data="lists"></proLists>
+				</view>
+			</view>
+			<view id="show_footer" v-if="data.product.fclass != 84 && ruleform.pay_method == 1 && data.product.fclass != 109 && data.product.fclass != 110 ">
+				<view class="left plr8">
+					<button class="btn-item" hover-class="none" @click="goto('/pages/index/main',2)">
+						<view class="icon dxi-icon dxi-icon-home2"></view>
+						<view class="txt">首页</view>
 					</button>
-					
-				</div>
-				<div class="right flex1 w-b100 pr5" v-if="!data.product.is_miaosha">
-					
-					<div class="r-nav">
-						
-						  <button class="data-v-309c0408 data-v-309c0408 plr0 plr0 r-item r-item r-item-yellow r-item-yellow" @click="toBuy">
-							  <label class="_span _span data-v-309c0408 data-v-309c0408">
-								  立即使用
-							  </label>
-						  </button>
-					</div>
-				</div>
-			</div>
-			<div id="show_footer" v-if="(data.product.fclass == 84 || data.product.fclass == 109 || data.product.fclass == 110) && ruleform.pay_method == 1">
-				<div class="left plr8">
-					<button class="btn-item share" hover-class="none" open-type="share">
-						<p class="iconfont icon-share"></p>
-						<p class="txt">分享</p>
+					<button class="btn-item share" hover-class="none" open-type="contact">
+						<view class="icon iconfont icon-pro-service"></view>
+						<view class="txt">客服</view>
 					</button>
-				</div>
-				<div class="right">
-					<div class="r-nav pr10">
-						<myform :ruleform="ruleform" :vaildate="vaildate" style="width:100%" @callBack="toBuy" myclass="r-item r-item-red" title="立即办理"></myform>
-					</div>
-				</div>
-			</div>
-			<div id="show_footer" v-if="ruleform.pay_method == 2">
-				<div class="left plr8">
-					<button class="btn-item share" hover-class="none" open-type="share">
-						<p class="iconfont icon-share"></p>
-						<p class="txt">分享</p>
+					<button class="btn-item share" hover-class="none" @click="collent = !collent">
+						<view :class="['icon iconfont',collent==true?'icon-pro-collent-fill main-color':'icon-pro-collent']"></view>
+						<view class="txt">收藏</view>
 					</button>
-				</div>
-				<div class="right">
-					<div class="r-nav pr10">
-						<div class="r-item r-item-red" @click="toBuyPackage" :data-is_info="info? 1 :0 " :data-num="num">套餐支付</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 如果该商品可以购买开始 -->
-		<view class="share-overlay" @click="shareDiag=!shareDiag" v-if="shareDiag"></view>
-		<div class="share-tip" @click="shareDiag=!shareDiag" v-if="shareDiag">
-			<img class="img" src="https://niu-shop-app.doxinsoft.com/images/jmb/share-tip.png" mode="widthFix">
-		</div>
+				</view>
+				<view class="right">
+					<view class="rnavG">
+						<button hover-calss="none" class="item" @click="$refs.shareProduct.shareBtn = true">分享好友</button>
+						<!-- <button hover-calss="none" class="item" @click="toBuy">立即抢购</button> -->
+						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="toBuy" :myclass="item" title="立即购买"></myform>
+					</view>
+				</view>
+			</view>
+		</view>
+		<sharePro :data="data" :headimgurl="headimgurl" ref="shareProduct"  :qrcodeFilePath="qrcodeFilePath" :posterFilePath="posterFilePath" v-if="show"></sharePro>
 	</view>
 </template>
 
 <script>
-	import "./index.css";
+	import tuiCountdown from "xiaozhu/uniapp/thorui/components/countdown/countdown";
+	import dxTag from "doxinui/components/tag/tag"
+	import dxTabs from "doxinui/components/tabs/tabs"
+	import proLists from "@/components/proLists";
 	import "@/components/gaoyia-parse/parse.css";
 	import uParse from '@/components/gaoyia-parse/parse.vue'
-	import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
-	import info from './layouts/info'
+	import sharePro from "@/components/poster/sharePro.vue";
 	export default {
+		components: {tuiCountdown,dxTag,dxTabs,proLists,uParse,sharePro},
 		data() {
 			return {
 				formAction: '/shop/product/show',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
+				lists:[{
+					cover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					newPrice:'42.9',
+					price:'131'
+				},{
+					cover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					newPrice:'42.9',
+					price:'131'
+				}],
+				memeber:[{
+					headerPic:'/static/fenxiaobg.jpg',
+					name:'东信科技'
+				},{
+					headerPic:'/static/fenxiaobg.jpg',
+					name:'广勇商务'
+				}],
+				collent: false,
+				merchant: {},
 				ruleform: {
 					brand: '',
 					pay_method: 1
 				},
 				vaildate: {},
+				show:false,
 				data: this.formatData(),
 				num: 1,
 				showEvaluate: false,
@@ -178,26 +209,32 @@
 				shareDiag: false,
 				product_cover:[],
 				rule_type: 0,
-				vaildate:{}
+				vaildate:{},
+				fingerprint: '',
+				posterFilePath: '',
+				proposterBg: '',
+				tempFilePath: '',
+				qrcodeFilePath: '',
+				headimgurl: '',
 			}
 		},
 		onReachBottom() {
 			console.log('123');
 			this.hasMore(this);
 		},
-		
 		onPullDownRefresh() {
 			this.data.nextPage = 1;
 			this.ajax();
 		},
 		onShareAppMessage() {
 			if (this.data.dis) this.data.query.distribution = this.data.dis.id;
+			this.data.query.proid = this.data.product.id;
 			return this.shareSource(this, this.data.product.name);
 		},
 		onLoad(options) {
 			this.rule_type = wx.getStorageSync('role_type');
 			this.num = 1;
-      		this.ruleform.pay_method = 1;
+			this.ruleform.pay_method = 1;
 			if (options.user_id) wx.setStorageSync('card_user_id', options.user_id);
 			this.ajax();
 		},
@@ -224,10 +261,61 @@
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
+					this.merchant = msg.product.takeMerchant.userInfo;
 					this.setTitle(msg.product.name);
+					if (msg.product.video_url) {
+						this.getQQvideoLink(msg.product.video_url, data => {
+							msg.product.video_url = data.url;
+							console.log(msg.product.video_url);
+						});
+					}
 					if(msg.product.product_cover){
 						this.product_cover = msg.product.product_cover.split(",");
 					}
+					if(msg.package){
+						this.ruleform.pay_method = 2;
+					}
+					let poster_cover = msg.product.poster_cover ? this.getSiteName + '/upload/images/product/' + msg.product.poster_cover :
+						msg.product.firstCover
+					wx.downloadFile({
+						url: poster_cover,
+						success: res => {
+							this.posterFilePath = res.tempFilePath;
+						},
+						fail: res => {
+							console.log(res);
+						}
+					});
+					console.log(msg.user.headimgurl);
+					wx.downloadFile({
+						url: msg.user.headimgurl,
+						success: res => {
+							this.headimgurl = res.tempFilePath;
+						},
+						fail: res => {
+							console.log(res);
+						}
+					});
+					wx.downloadFile({
+						url: this.data.product.firstCover,
+						success: res => {
+							this.productFirstCover = res.tempFilePath;
+							//this.show = true;
+						},
+						fail: res => {
+							console.log(res);
+						}
+					});
+					wx.downloadFile({
+						url: this.data.qrcode,
+						success: res => {
+							this.qrcodeFilePath = res.tempFilePath;
+							this.show = true;
+						},
+						fail: res => {
+							console.log(res);
+						}
+					});
 				});
 			},
 			addCart() {
@@ -264,7 +352,7 @@
 						});
 					}
 				}
-
+			
 			},
 			addUserCollection() {
 				let product_id = this.data.product.id;
@@ -281,15 +369,9 @@
 			change: function(e) {
 				this.num = e.value
 			},
-		},
-		components: {
-			uParse,
-			info,
-			tuiNumberbox
-
 		}
 	}
 </script>
 <style>
-
+@import "./index.css";
 </style>

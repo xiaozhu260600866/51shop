@@ -43,45 +43,6 @@
 					<orderPro :data="ruleform.products" url="/pages/product/show/main?id="></orderPro>
 				</view>
 				
-				<!-- 回桶、押桶、买桶选择，三者选一个 -->
-				<view class="order-sec">
-
-					<weui-input @radioCallBack="bucketCallBack" v-model="ruleform.bucket_type" name="bucket_type" changeField="label"
-					 :type="ruleform.status>=3 ?'txt':'radio'" dataKey="bucketTypeArr" myclass="exchangeSon"></weui-input>
-					<view class="relative">
-						<weui-input v-model="ruleform.bucket_value" name="bucket_value" changeField="label" :type="ruleform.status>=3?'txt':'radio'"
-						 dataKey="exchangeSonArr" myclass="exchangeSon" v-if="ruleform.bucket_type == '回桶'" :row="true" Labelleft></weui-input>
-						<view class="flex-middle orderBrand" v-if="ruleform.bucket_value == '其他品牌' && ruleform.bucket_type == '回桶'">
-							<weui-input v-model="ruleform.bucket_brand" placeholder="请选择品牌" myclass="Brand" name="bucket_brand" changeField="value"
-							 type="select" dataKey="orderBrandArr"></weui-input>
-							<weui-input v-model="ruleform.bucket_num" label="数量" myclass="Num" name="bucket_num" changeField="value" type="select"
-							 dataKey="orderNumArr"></weui-input>
-						</view>
-						<view class="pl40 pb10 fs-16 lh-24" v-if="ruleform.bucket_value == '其他品牌' && ruleform.bucket_type == '回桶'">
-							<!-- 春节期间免换桶费10元。 -->
-							<!-- 换桶：10元每个。<br>新用户下单24小时内返还换瓶费10元/个 -->
-							<!-- 温馨提示:<br>换桶费10元/个 -->
-							</view>
-					</view>
-					<view class="tong" v-if="ruleform.bucket_type == '押桶'">
-						<view class="list">押桶：{{exchangeSonArr[0].label}}</view>
-						<view class="list">
-							<view>温馨提示：</view>
-							<view class="con fc-6 lh-24">押桶：50元一个。<br>每个空桶每年使用费10元。（不足一年按一年收取使用费）</view>
-						</view>
-					</view>
-					<view class="tong" v-if="ruleform.bucket_type == '买桶'">
-						<view class="list">买桶：{{exchangeSonArr[0].label}}</view>
-						<view class="list">
-							<view>温馨提示：</view>
-							<view class="con fc-6 lh-24">买桶：15元一个。</view>
-						</view>
-					</view>
-					
-					<!-- <weui-input v-model="ruleform.bucket_num" label="桶数" name="bucket_num" changeField="label" :type="ruleform.status>=3?'txt':'select'" dataKey="bucketNumArr" placeholder="选择桶数"  v-if="ruleform.bucket_type != '回桶'"></weui-input> -->
-				</view>
-				<!-- 回桶、押桶、买桶选择，三者选一个 -->
-				
 				<view id="mode" class="buy-info order-sec">
 					<view v-if="ruleform.shipping == 1">
 						<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
@@ -98,9 +59,6 @@
 							<view class="weui-cell__ft_in-access"></view>
 						</view>
 					</view> -->
-					<!-- <weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
-					 dataKey="shipping" :disabled="ruleform.fclass == 109 || ruleform.fclass == 110 ||ruleform.status >=3  || ruleform.type == 1? true :false"
-					 @callback="selectCallBack" v-if='ruleform.is_hot == 0'></weui-input> -->
 					<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
 					 dataKey="shipping" :disabled="true" @callback="selectCallBack" v-if='ruleform.is_hot == 0'></weui-input>
 					<view :class="['weui-cell','weui-cell_input','p10','bd-be','industry']" @click="chooseMerchant" v-if="ruleform.shipping == 1 && ruleform.is_hot == 0">
@@ -135,20 +93,6 @@
 						<p class="txt">商品金额</p>
 						<p class="fs-16 price">￥{{ruleform.amount}}</p>
 					</view>
-					<!-- 根据上述选择，三选其一显示 -->
-					<view class="list-group" v-if="ruleform.bucket_type == '回桶'">
-						<p class="txt">换桶费</p>
-						<p class="fs-16 price">￥{{exchangeBucket}}</p>
-					</view>
-					<view class="list-group" v-if="ruleform.bucket_type == '押桶'">
-						<p class="txt">押桶</p>
-						<p class="fs-16 price">￥{{exchangeBucket}}</p>
-					</view>
-					<view class="list-group" v-if="ruleform.bucket_type == '买桶'">
-						<p class="txt">买桶</p>
-						<p class="fs-16 price">￥{{exchangeBucket}}</p>
-					</view>
-					<!-- 根据上述选择，三选其一显示 -->
 					<view class="list-group" v-if="ruleform.shipping == 2">
 						<p class="txt">运费</p>
 						<p class="fs-16 price">+ ￥{{ ruleform.yunfei }}</p>
@@ -183,36 +127,6 @@
 			<!-- 普通订单结束 -->
 			<!-- 折扣订单 -->
 			<view v-if="data.show && ruleform.type == 1">
-			<!-- 	<view id="address" class="bg-f mb12">
-					<block v-if="!address">
-						<view class="add-add ptb15 plr10" @click="createAddress">
-							<p class="add-icon iconfont icon-count-plus mr10"></p>
-							<p class="add-txt fs-16">新增收货地址</p>
-							<p class="iconfont icon-right fs-12 fc-9"></p>
-						</view>
-					</block>
-					<block v-else>
-						<view class="add-info plr10" @click="addressLists" v-if="address.name">
-							<view class="licon pr15">
-								<span class="iconfont icon-location fs-22 main-color"></span>
-							</view>
-							<view class="info ptb10">
-								<p class="name fs-16">
-									<span>{{address.name}}</span>
-									<span class="Arial pl10">{{address.phone}}</span>
-								</p>
-								<view class="add-detail fs-15 fc-6">
-									<p class="label">地址：</p>
-									<p class="name">{{ address.province }} {{ address.city }} {{ address.area }} {{ address.address }}</p>
-								</view>
-							</view>
-							<p class="iconfont icon-right fs-12 fc-9 pl15"></p>
-						</view>
-					</block>
-					<view class="pay_line">
-						<image :src="getSiteName+'/images/site/share-tip.png'"></image>
-					</view>
-				</view> -->
 				<view class="order-sec">
 					<orderPro :data="ruleform.products" url="/pages/product/show/main?id="></orderPro>
 				</view>
@@ -220,7 +134,7 @@
 					<view class="plr15 pt15 pb5 lh-1 fs-17">联系信息</view>
 					<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
 					<weui-input v-model="ruleform.addr_phone" label="电话" type="number" name="addr_phone" datatype="require|phone"></weui-input>
-					<weui-input v-model="ruleform.addr_address" label="地址" type="text" name="addr_address" datatype="require" v-if="ruleform.products[0].getProduct.address_require"></weui-input>
+					<!-- <weui-input v-model="ruleform.addr_address" label="地址" type="text" name="addr_address" datatype="require" v-if="ruleform.products[0].getProduct.address_require"></weui-input> -->
 				</view>
 				<view id="mode" class="buy-info order-sec">
 					<!-- <view :class="['weui-cell','weui-cell_input','bd-be']" @click="previewImage(ruleform.order_no+'.png','order')" v-if="ruleform.status >=3">
@@ -286,34 +200,6 @@
 				<view id="footer" class="bd-t" v-else>
 					<view class="f_left"></view>
 					<view class="f_right flex-middle mlr5"><view class="nav-o">完成</view></view>
-				</view>
-			</view>
-		</view>
-		<view v-else-if="data.show && ruleform.dianxin ==1">
-			<view class="order-sec">
-				<orderPro :data="ruleform.products"></orderPro>
-			</view>
-			<view id="mode" class="order-sec">
-				<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require|phone"></weui-input>
-				<dxAddress v-model="ruleform.addr_address" padding="plr10"></dxAddress>
-			</view>
-			
-			<view id="footer" v-if="ruleform.status == 1">
-				<view class="f_right flex1">
-					<myform myclass="nav" :ruleform="ruleform" :vaildate="vaildate" @callBack="submit" title="马上办理"></myform>
-				</view>
-			</view>
-			<view id="footer" v-else-if="ruleform.status == 3 || ruleform.status == 5">
-				<view class="f_left"></view>
-				<view class="f_right">
-					<view class="nav" @click="canReceipt">确认收货</view>
-				</view>
-			</view>
-			<view id="footer" v-else>
-				<view class="f_left"></view>
-				<view class="f_right">
-					<view class="nav-o" >完成</view>
 				</view>
 			</view>
 		</view>

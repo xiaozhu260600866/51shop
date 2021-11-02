@@ -2,7 +2,8 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<div v-if="data.show">
-			<productLists :data="data" type="3"></productLists>
+			
+			<productLists :data="data" type="2"></productLists>
 			<hasMore :parentData="data"></hasMore>
 		</div>
 		<selectCity ref="selectCity" title="请选择配送区域" :ruleform="ruleform" :townArr="townArr" :cityArr="cityArr" :provinceArr="provinceArr" :areaArr="areaArr" @callBack="cityCallBack"></selectCity>
@@ -14,9 +15,7 @@
 	import productLists from "@/components/productLists";
 	import selectCity from "@/components/selectCity.vue"
 	export default {
-		components: {
-			productLists,selectCity
-		},
+		components: {productLists,selectCity},
 		data() {
 			return {
 				formAction: '/shop/product/lists?is_hot=1&type=1',
@@ -42,9 +41,9 @@
 			},
 			toProduct(item){
 				if(item.num > 0 && item.canHot){
-					return this.goto('/pages/hot/show/index?id='+item.id,1);
+					// return this.goto('/pages/hot/show/index?id='+item.id,1);
+					return this.goto('/pages/product/show/main?id='+item.id,1);
 				}
-				
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {
@@ -66,11 +65,7 @@
 				if(!this.waterCityData)this.waterCityData = uni.getStorageSync("waterCityData");
 				this.ajax();
 			}
-			
-			
-			
 		},
-		components: {  },
 		onReachBottom() {
 			this.hasMore(this);
 		},

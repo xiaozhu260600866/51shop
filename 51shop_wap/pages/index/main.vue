@@ -1,75 +1,55 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction" Fbottom="bottom: 25px">
-			<view slot="floatBtn">
-				<!-- <view @click="phone('0750-3336666')">
-					<floatBtn icon="icon-float-tel" myclass="float-nav-w-green" iSize="fs-22" title="电话" shadow></floatBtn>
-				</view> -->
-				<!-- <view @click="data.dis ? goto('/pages/distribution/index/main',1) :goto('/pages/distribution/add/main',1) " v-if="data.release">
-					<floatBtn  myclass="float-nav-red" iSize="fs-16" nSize="fs-14" title="申请VIP"></floatBtn>
-				</view> -->
+			<!-- <view slot="floatBtn">
 				<floatBtn type="2" icon="icon-float-feedback" myclass="float-nav-red" iSize="fs-22" openType="contact" title="咨询" shadow></floatBtn>
-			</view>
+			</view> -->
 		</page>
 		<view v-if="data.show">
-			<view class="top-custom" :style="{paddingTop:top*2+'rpx',height:height*2+'rpx',}">
-				<view class="top-custom-box pl0">
-					<view class="right flex1"><THeader showCity :data="data" :callBack="true" city="江门市" @callBack="$refs.selectCity.init()" title="信息搜索" :waterCityData="waterCityData" TcountShow searchUrl="/pages/search/demand/main" noborder></THeader></view>
+			<view class="top-custom">
+				<view class="top-custom-box">
+					<view class="right flex1"><THeader showCity :data="data" :callBack="true" city="江门市" @callBack="$refs.selectCity.init()" title="搜索商品信息" :waterCityData="waterCityData" TcountShow noborder></THeader></view>
 				</view>
 			</view>
-			<view :style="{marginTop: height*2+'rpx'}">
+			<view>
 				<view class="groupAd">
 					<myswiper :data="data.ad1"></myswiper>
 				</view>
-				<!-- <view id="banner" class="pt5" v-if="data.silders.data.length">
-					<myswiper :lists="data.silders.data"></myswiper>
-				</view> -->
-				<view class="tread bg-f" :class="data.ad1.length == 0?'pt10':''">
-				<!-- 	<view class="tread-info">
-						<text class="Arial">{{data.weather.date}}</text>
-						<text>星期{{data.weather.week}}</text>
-						<text class="Arial">{{data.weather.temperature}}°</text>
-						<text>{{data.weather.weather}}</text>
-					</view> -->
-					<view class="tread-info">总信息量<text class="Arial">{{data.articleOrderCount}}</text></view>
-					<view class="tread-info">总浏览<text class="Arial">{{data.viewsCount}}</text></view>
-				</view>
 				<view class="mb8">
-					<!-- 一级分类 -->
 					<view class="InavClass">
-						<dx-nav-class :data="data.location" :num="5" :namePTop="0" :imgR="25" :tbPadding="0" @click="childrenNav"></dx-nav-class>
+						<dx-nav-class :data="data.location" :num="4" :namePTop="0" :imgWidth="40" :imgHeight="40" :itemPadding="5" @click="childrenNav"></dx-nav-class>
 					</view>
-					<!-- 二级分类 -->
-					<!-- @click="classNav" <view class="InavGroup" v-if="childrenShow">
-						<dx-nav-class ref="text" :data="children" @click="childrenNav" :num="5" :isturnpage="true" :pageNum="5" :namePTop="0" :imgR="25" :tbPadding="0" ></dx-nav-class>
-					</view> -->
 				</view>
 				<view class="infoGroup">
-					<demand-lists :data="data.lists.data" @thumb="thumb3" v-if="listsShow" type="1"></demand-lists>
+					<view class="tit plr15 pt15 pb5 bg-f flex-between">
+						<view class="name fs-18">限时抢购</view>
+						<view class="countdown flex-middle">
+							<view class="text pr3">剩余</view>
+							<tui-countdown :time="timeList" bcolor="#d30802" bgcolor="#d30802" colonColor="#d30802" color="#fff"
+							 :height="32" :width="36"></tui-countdown>
+							<view class="text pl3">结束</view>
+						</view>
+					</view>
+					<proLists :data="lists"></proLists>
 				</view>
 				<view class="infoGroup">
 					<view class="groupAd" >
 						<myswiper :data="data.ad2"></myswiper>
 					</view>
-					<businessLists :data="data.merchant" :otherData="otherData"></businessLists>
+					<!-- <businessLists :data="data.merchant" :otherData="otherData"></businessLists> -->
 				</view>
 				
 				<view class="infoGroup">
 					<view class="groupAd">
 						<myswiper :data="data.ad3"></myswiper>
 					</view>
-					<demand-lists :data="data.lists.data" @thumb="thumb3" v-if="listsShow" type="2"></demand-lists>
+					<!-- <demand-lists :data="data.lists.data" @thumb="thumb3" v-if="listsShow" type="2"></demand-lists> -->
 				</view>
 				
 				<view class="bg-f ptb15 text-center fs-14 fc-3" @click="goto('/pages/demand/index/main',1)">点击查看更多</view>
 				
-				<!-- <view class="ass-title p15 pr0 bgf" @click="goto('/pages/product/lists/main',1)">
-					<p class="name fs-16">精选推荐<span class="fs-12 pt5 fc-9 pl5">推荐更多优质好货</span></p>
-					<p class="icon iconfont icon-n-right fc-9 fs-13 pr15"></p>
-				</view>
-				<productLists :data="data" type="1" v-if="data.lists.data.length"></productLists> -->
 				<view class="copyright fs-13 fc-9 m20 flex-center flex">
-					<span>版权所有：</span><span class="fc-9">456在线</span>
+					<span>版权所有：</span><span class="fc-9">51选到</span>
 				</view>
 			</view>
 		</view>
@@ -85,16 +65,16 @@
 
 <script>
 	import "./index.css";
-	import marque from "xiaozhu/uniapp/components/marque";
 	import THeader from '@/components/THeader';
-	import productLists from "@/components/productLists";
+	import proLists from "@/components/proLists";
 	import demandLists from "@/components/demandLists";
 	import businessLists from '@/components/business_lists';
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
 	import selectCity from "@/components/selectCity.vue"
 	import dxDiag from "doxinui/components/diag/diag"
+	import tuiCountdown from "xiaozhu/uniapp/thorui/components/countdown/countdown";
 	export default {
-		components: {marque,THeader,productLists,demandLists,dxNavClass,businessLists,selectCity,dxDiag},
+		components: {THeader,proLists,demandLists,dxNavClass,businessLists,selectCity,dxDiag,tuiCountdown},
 		data() {
 			return {
 				formAction: '/shop/wapindex2',
@@ -124,6 +104,23 @@
 				childrenKey:0,
 				childrenShow:false,
 				children:[],
+				swiper01:[
+					{cover:'https://51shop.doxinsoft.com/images/site/tt00.jpg'}
+				],
+				lists:[{
+					firstCover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					price:'42.9',
+					new_price:'131',
+					id:'4619',
+				},{
+					firstCover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					price:'42.9',
+					new_price:'131',
+					id:'4619',
+				}],
+				timeList:6000
 			}
 		},
 		onReachBottom() {
@@ -196,6 +193,9 @@
 			
 		},
 		methods: {
+			checkAuth(v){
+				return this.goto(v.url,v.type);
+			},
 			cityCallBack(item){
 				uni.setStorageSync("waterCityData",item);
 				uni.setStorageSync("waterCity",item.province + item.city+ item.town + item.area);

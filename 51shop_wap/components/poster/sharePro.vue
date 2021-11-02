@@ -27,7 +27,7 @@
 </template>
 <script type="text/javascript">
 	export default {
-		props: ["data", "posterFilePath",  "qrcodeFilePath" ,"headimgurl"],
+		props: ["data", "posterFilePath",  "qrcodeFilePath" ,"headimgurl","shareBtn"],
 		data() {
 			return {
 				shareBtn: false,

@@ -19,11 +19,20 @@ button::after{border: 0;}
 .loadingWidth100{background-color:#eee;color:#eee;width:100%;}
 .share-overlay{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;z-index: 99;width: 100%; height: 1600upx; background-color: rgba(0,0,0,0.6)}
 
-.main-color{color: #33c45d!important;}
-.main-bg{background: #33c45d!important;}
-.main-border{border-color: #33c45d!important;}
+/* 主题 */
+.main-color{color: #d30802!important;}
+.main-bg{background: #d30802!important;}
+.main-border{border-color: #d30802!important;}
 .dx-btn-green{background: #33c45d;border-radius: 8upx;color: #fff;}
 .dx-btn-green-o{border: 2upx #33c45d solid;background: #fff;border-radius: 8upx;color: #33c45d;}
+
+
+/* 红色 */
+.dxi-btn-primary {color: #fff;background-color: #d30802!important;border-color: #d30802!important;}
+.dxi-btn-primary:focus,.dxi-btn-primary:hover {background: #d30802!important;border-color: #d30802!important;color:#fff}
+.dxi-btn-primary:active {outline: none}
+.dxi-tag{background-color: #d30802!important;border-color: #d30802!important;}
+.dxi-tag.is-hollow{background-color: #fff!important;border-color: rgba(211,8,2,0.8)!important;color: #d30802!important;}
 
 
 /* 置顶搜索 */
@@ -138,18 +147,19 @@ button::after{border: 0;}
 
 
 /* 详情脚部 */
-#show_footer{height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;z-index:99;display: flex;}
+#show_footer{min-height: 100upx;position: fixed;left: 0;bottom: 0;width: 100%;background: #fff;z-index:99;display: flex;align-items: center;}
 #show_footer:before{content: '';position: absolute;top: 0;right: 0;left: 0;border-top: 1upx solid #eaeef1;-webkit-transform: scaleY(0.5);-ms-transform: scaleY(0.5);transform: scaleY(0.5);}
 #show_footer .left{display: flex;}
 #show_footer .left .btn-item{padding: 8upx 0;margin: 0;width: 100upx;text-align: center;background: transparent;}
 #show_footer .left_w40 .btn-item{width: 80upx;}
-#show_footer .left .iconfont{height: 52upx;line-height: 56upx;font-size: 40upx;color: #666;}
+#show_footer .left_w60 .btn-item{width: 120upx;}
+#show_footer .left .iconfont,#show_footer .left .icon{height: 52upx;line-height: 56upx;font-size: 40upx;color: #666;display: block;}
 #show_footer .left .txt{height: 32upx;line-height: 32upx;font-size: 24upx;color: #666;}
 #show_footer .left .cart{position: relative;}
 #show_footer .left .cart .sum{position: absolute;top: 0px;right: 6upx;background: #FF7900;color: #fff;font-size: 20upx;border-radius: 50%;height: 32upx;width: 32upx;text-aling:center;line-height: 32upx;}
 #show_footer .right{line-height: 100upx;display: flex;flex: 1;overflow: hidden;align-items: center;}
 #show_footer .right myform{width: 100%;}
-#show_footer .right .r-nav{width: 100%;padding: 10upx 6upx;}
+#show_footer .right .r-nav{width: 100%;padding: 20upx 6upx;}
 #show_footer .right .r-item{text-align: center;font-size: 32upx;color: #fff;height: 80upx;line-height: 80upx;border-radius: 40upx;}
 #show_footer .right .r-item-yellow{background-color: #FF7900;} 
 #show_footer .right .r-item-red{background-color: #f30600;}
@@ -157,6 +167,10 @@ button::after{border: 0;}
 #show_footer .right .r-item-blue{background-color: #007aff;}
 #show_footer .right .r-item-default{background-color: #eee;color: #999;}
 #show_footer .right .r-opacity{opacity: 0.5;}
+#show_footer .right .rnavG{display: flex;padding: 20rpx 16rpx 20rpx 6rpx;width: 100%;}
+#show_footer .right .rnavG .item{width: 100%;margin: 0;height: 80rpx;font-size: 28rpx;color: #fff;line-height: 80rpx;}
+#show_footer .right .rnavG .item:first-child{background: linear-gradient(270deg,#de8a1d,#f7c264);border-radius: 40rpx 0 0 40rpx;}
+#show_footer .right .rnavG .item:last-child{background: #d30802;border-radius: 0 40rpx 40rpx 0;}
 
 
 /* 商品列表 */
@@ -258,8 +272,8 @@ button::after{border: 0;}
 
 
 /* 顶部 */
-.top-custom{background-color: #fff;position: fixed;top: 0;left: 0;width: 100%;z-index: 999;}
-.top-custom-box{display: flex;padding: 0 30% 0 30rpx;align-items: center;}
+.top-custom{background-color: #fff;width: 100%;z-index: 999;padding: 16rpx 0;}
+.top-custom-box{display: flex;padding: 0 30rpx;align-items: center;}
 .top-custom-box .name{font-size: 36rpx;color: #000000;padding-right: 30rpx;}
-.top-custom-box .tsearch .searchInput{padding: 0!important;width: 240rpx!important;display: flex;justify-content: flex-end;}
-.top-custom-box .tsearch .searchbox{width: 240rpx!important;}
+.top-custom-box .tsearch .lcity{padding: 0 30rpx 0 0!important;}
+.top-custom-box .tsearch .searchInput{padding: 0!important;}
