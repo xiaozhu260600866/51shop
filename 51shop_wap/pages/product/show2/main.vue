@@ -55,14 +55,15 @@
 					{value: 1,name: '图文详情'},
 					{value: 2,name: '购买须知'},
 					{value: 3,name: '精选推荐'}
-				]" :height="100" selectedColor="#333" color="#999" sliderBgColor="#d30802" :sliderWidth="60" :size="30" :selectedSize="30"></dx-tabs>
-				<!-- <view class="show_tabs">
-					<view class="item cur">商家信息</view>
-					<view class="item">图文详情</view>
-					<view class="item">购买须知</view>
-					<view class="item">精选推荐</view>
-				</view> -->
-				<view id="show01" class="show_content_sec show_content_sec01">
+				]" :height="100" selectedColor="#333" color="#999" sliderBgColor="#d30802" :sliderWidth="60" :size="30" :selectedSize="30"
+				 @change="showItem()" :isFixed="isFixed"></dx-tabs>
+				<view class="show_tabs">
+					<view class="item cur" @click="">商家信息</view>
+					<view class="item" @click="goto('#show02')">图文详情</view>
+					<view class="item" @click="goto('#show03')">购买须知</view>
+					<view class="item" @click="goto('#show04')">精选推荐</view>
+				</view>
+				<view id="show01" ref="showItem0" class="show_content_sec show_content_sec01">
 					<view class="flow">
 						<view class="type">团购券</view>
 						<view class="path">立即抢购</view>
@@ -85,10 +86,10 @@
 						</view>
 					</view>
 				</view>
-				<view id="show02" class="show_content_sec show_content_sec02">
+				<view id="show02" ref="showItem1" class="show_content_sec show_content_sec02">
 					<u-parse :content="data.product.content" />
 				</view>
-				<view id="show03" class="show_content_sec show_content_sec03">
+				<view id="show03" ref="showItem2" class="show_content_sec show_content_sec03">
 					<view class="sec_title">
 						<view class="name">购买须知</view>
 						<view class="tagG">
@@ -123,7 +124,7 @@
 						</view>
 					</view>
 				</view>
-				<view id="show04" class="show_content_sec show_content_sec04">
+				<view id="show04" ref="showItem3" class="show_content_sec show_content_sec04">
 					<view class="sec_title">
 						<view class="name">精选推荐</view>
 					</view>
@@ -216,6 +217,8 @@
 				tempFilePath: '',
 				qrcodeFilePath: '',
 				headimgurl: '',
+				scrollTop:'',
+				isFixed: false,
 			}
 		},
 		onReachBottom() {
@@ -238,9 +241,19 @@
 			if (options.user_id) wx.setStorageSync('card_user_id', options.user_id);
 			this.ajax();
 		},
+		onPageScroll : function(e) { //nvue暂不支持滚动监听，可用bindingx代替
+			console.log("滚动距离为：" + e.scrollTop,this.scrollTop);
+			this.scrollTop = e.scrollTop;
+		},
 		methods: {
 			changeBrand(val){
 				this.ruleform.brand = val;
+			},
+			chchange(){
+				uni.pageScrollTo({  
+					scrollTop: this.$refs['showItem' + value].$el.offsetTop,  
+					duration: 100  
+				}); 
 			},
 			rechargeYaji() {
 				setTimeout(() => {

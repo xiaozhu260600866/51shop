@@ -1,14 +1,14 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<div v-if="data.show">
-			<div v-if="data.show">
-				<div class="logo ptb20">
-					<image class="img" :src="getSiteName+'/images/456LOGO-02.jpg'"></image>
-				</div>
-				<div class="login-list m15" v-if="data.show">
-					
-					<div class="login02" >
+		<view class="bg-white"></view>
+		<view class="zIndex2" v-if="data.show">
+			<view v-if="data.show">
+				<view class="logo ptb20">
+					<image class="img" :src="getSiteName+'/images/logo.jpg'"></image>
+				</view>
+				<view class="login-list m15" v-if="data.show">
+					<view class="login02" >
 						<view class="login-info">
 							<weui-input v-model="ruleform.phone" placeholder="手机号码" type="number" myclass="plr0" name="phone" datatype="require|phone">
 								<view slot="left" class="slot-icon">
@@ -21,17 +21,15 @@
 									<view class="iconfont icon-login-passwork"></view>
 								</view>
 							</weui-input>
-								
 						</view>
-						<div class="login-btn mt20">
+						<view class="login-btn mt20">
 							<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn dx-btn-big dx-btn-green bdr4 w-b100 fs-17"
 							 title="登录"></myform>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 

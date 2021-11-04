@@ -1,23 +1,15 @@
 /* app.wxss */
 page{background: #f5f5f5;}
 view,sroll-view,swiper,icon,text,progress,button,checkbox,form,input,label,input,picker,radio,slider,switch,action-sheet,modal,toast,loading,navigator,audio,image,video,map,canvas,div,input,p,span,li,ul,textarea,select {box-sizing: border-box;}
-.fs_bold{font-weight: bold;}
 button::after{border: 0;}
+
 
 .block-sec{background-color: #fff;margin: 24upx;border-radius: 12upx;overflow: hidden;}
 .dx-cell,.dx-cell input{font-size: 32upx!important;}
-.swiper-banner image{width: 100%!important;}
-
-.float-group{z-index: 100!important;}
-
-
-.flex-items-end{display: flex;align-items: flex-end;}
-.flex-content-end{display: flex;align-content: flex-end;}
-
-
-.loading{background-color:#eee;color:#eee;width: 160upx;}
-.loadingWidth100{background-color:#eee;color:#eee;width:100%;}
+.bg-white{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;z-index: 0;width: 100%; height: 1600upx; background-color: #fff;}
+.zindex2{z-index: 2;position: relative;}
 .share-overlay{position: fixed;top: 0px;right: 0;bottom: 0;left: 0;z-index: 99;width: 100%; height: 1600upx; background-color: rgba(0,0,0,0.6)}
+
 
 /* 主题 */
 .main-color{color: #d30802!important;}

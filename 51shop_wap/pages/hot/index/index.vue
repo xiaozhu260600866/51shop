@@ -2,7 +2,6 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<div v-if="data.show">
-			
 			<productLists :data="data" type="2"></productLists>
 			<hasMore :parentData="data"></hasMore>
 		</div>
@@ -38,12 +37,6 @@
 				this.ajax();
 				this.waterCityData = item;
 				console.log(item);
-			},
-			toProduct(item){
-				if(item.num > 0 && item.canHot){
-					// return this.goto('/pages/hot/show/index?id='+item.id,1);
-					return this.goto('/pages/product/show/main?id='+item.id,1);
-				}
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {

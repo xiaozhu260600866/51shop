@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/main",
 			"style": {
-				"navigationBarTitleText": "456在线",
+				"navigationBarTitleText": "51选到",
 				"enablePullDownRefresh": true,
 				"navigationStyle":"custom"
 			}
@@ -430,9 +430,14 @@
 			"style": {
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": true,
-				"navigationBarBackgroundColor": "#33c45d",
-				"navigationBarTextStyle": "white",
-				"backgroundColorTop": "#33c45d"
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/user/info/main",
+			"style": {
+				"navigationBarTitleText": "账号设置",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -566,24 +571,9 @@
 			"text": "首页",
 			"iconPath": "static/image/A01.png",
 			"selectedIconPath": "static/image/A02.png"
-		}, {
-			"pagePath": "pages/distribution/coupon/lists",
-			"text": "领免费券",
-			"iconPath": "static/image/C01.png",
-			"selectedIconPath": "static/image/C02.png"
-		}, {
-			"pagePath": "pages/hot/index2/index",
-			"text": "福利商城",
-			"iconPath": "static/image/E01.png",
-			"selectedIconPath": "static/image/E01.png"
-		}, {
-			"pagePath": "pages/water-mall/main",
-			"text": "桶装水城",
-			"iconPath": "static/image/F01.png",
-			"selectedIconPath": "static/image/F02.png"
-		}, {
+		},{
 			"pagePath": "pages/user/index/main",
-			"text": "我的券",
+			"text": "我的",
 			"iconPath": "static/image/D01.png",
 			"selectedIconPath": "static/image/D02.png"
 		}]

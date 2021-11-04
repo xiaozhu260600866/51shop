@@ -2,7 +2,6 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view class="container" v-if="data.show">
-			
 			<view class="template" v-if="data.can_add">
 				<view class="not-add" v-if="data.passing">
 					<view class="not-add2">
@@ -14,37 +13,35 @@
 					</view>
 				</view>
 				<view v-else>
-				
-						<view class="validform_ajax">
-							<view class="list-group">
-								<view class="list-group-item">
-									<view class="value">填写真实信息，成为我们的合作伙伴！</view>
-								</view>
-								<view class="list-group-item">
-									<view class="value">
-										<input type="text" placeholder="请填写您的姓名" class="form-control" v-model.lazy="ruleform.name" />
-									</view>
-								</view>
-								<view class="list-group-item">
-									<view class="value">
-										<input type="text" placeholder="请填写您的手机号码" class="form-control" v-model.lazy="ruleform.phone" />
-									</view>
-								</view>
-								<view class="dx-cell dx-select select-item" @click="openCity">
-									<view class="dx-cell_bd">
-										{{ruleform.city2 ? ruleform.city2 : '请选择所在区域'}}
-									</view>
-									<view class="dx-cell_ft dx_ft-access"></view>
-								</view>
-								<view class="list-group-item">
-									<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn-big dx-btn-red" title="提交">
-									
-									</myform>
-									
+					<view class="validform_ajax">
+						<view class="list-group">
+							<view class="list-group-item">
+								<view class="value">填写真实信息，成为我们的合作伙伴！</view>
+							</view>
+							<view class="list-group-item">
+								<view class="value">
+									<input type="text" placeholder="请填写您的姓名" class="form-control" v-model.lazy="ruleform.name" />
 								</view>
 							</view>
+							<view class="list-group-item">
+								<view class="value">
+									<input type="text" placeholder="请填写您的手机号码" class="form-control" v-model.lazy="ruleform.phone" />
+								</view>
+							</view>
+							<view class="dx-cell dx-select select-item" @click="openCity">
+								<view class="dx-cell_bd">
+									{{ruleform.city2 ? ruleform.city2 : '请选择所在区域'}}
+								</view>
+								<view class="dx-cell_ft dx_ft-access"></view>
+							</view>
+							<view class="list-group-item">
+								<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn-big dx-btn-red" title="提交">
+								
+								</myform>
+								
+							</view>
 						</view>
-				
+					</view>
 				</view>
 			</view>
 			<view class="template" v-else>

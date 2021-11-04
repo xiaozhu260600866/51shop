@@ -8,8 +8,6 @@
 			<weui-input v-model="ruleform.name" label="联系人" type="text" name="name" datatype="require"></weui-input>
 			<weui-input v-model="ruleform.phone" label="手机" type="number" name="phone" datatype="require|phone" :disabled="true"></weui-input>
 			<weui-input v-model="ruleform.tel" label="固话" type="number" name="tel"></weui-input>
-			
-		
 			<weui-input v-model="ruleform.address" label="选择地址" navClass="dx-btn dx-btn-green ptb0 plr15" type="location" name="address"
 			 @callback="locationRes"></weui-input>
 			<weui-input v-model="ruleform.start_hour" label="营业开始时间" type="time" name="start_hour"></weui-input>
@@ -26,7 +24,7 @@
 			</div>
 			<weui-input v-model="ruleform.remark_pic" label="介绍图片" type="upload" upurl='user' allowUpLoadNum="10" name="remark_pic"
 			 placeholder="介绍图片"></weui-input>
-			<div class="login-btn m20">
+			<div class="login-btn p20">
 				<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn dx-btn-big dx-btn-green-o w-b100 mt10 fs-17"></myform>
 			</div>
 		</div>
