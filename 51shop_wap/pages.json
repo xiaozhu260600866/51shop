@@ -176,7 +176,8 @@
 			"path": "pages/distribution/index/main",
 			"style": {
 				"navigationBarTitleText": "VIP中心",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"navigationStyle":"custom"
 			}
 		},
 		{
