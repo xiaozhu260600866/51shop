@@ -23,14 +23,14 @@
 					</swiper>
 				</view>
 			</view>
-			<view class="countdown-row main-bg fc-white">
+			<view class="countdown-row fc-white">
 				<view class="left flex-middle">
 					<text class="iconfont icon-pro-time pr5"></text>
 					<image class="img" mode="widthFix" src="/static/time-limit.png"></image>
 				</view>
 				<view class="countdown flex-middle">
 					<view class="text pr3 fs-13">距离结束还剩</view>
-					<tui-countdown :time="timeList" bcolor="#fff" bgcolor="#fff" colonColor="#fff" color="#d30802"
+					<tui-countdown :time="timeList" bcolor="#fff" bgcolor="#fff" coloncolor="#fff" color="#fa475a"
 					 :height="32" :width="36"></tui-countdown>
 				</view>
 			</view>
@@ -330,7 +330,7 @@
 			ajax() {
 				this.getAjax(this).then(msg => {
 					this.merchant = msg.product.takeMerchant.userInfo;
-					this.setTitle(msg.product.name);
+					// this.setTitle(msg.product.name);
 					if (msg.product.video_url) {
 						this.getQQvideoLink(msg.product.video_url, data => {
 							msg.product.video_url = data.url;

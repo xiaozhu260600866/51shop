@@ -1,19 +1,16 @@
-.container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-}
+.share-qrcode-bg{position: relative;background-size: 100% auto;}
+.share-qrcode-bg .img{width: 100%;position: relative;z-index: 2;display: flex;}
+.qrcode-box .qrcode{position: absolute;z-index: 3;top: 36.5%;left: 50%;margin-left: -145rpx;}
+.qrcode-box .qrcode .img{width: 290rpx;height: 290rpx;}
+
+.share-nav{position: absolute;bottom: 0;left: 0;width: 100%;z-index: 4;padding: 0 30rpx 100rpx;display: flex;justify-content: space-around;}
+.share-nav .item{margin: 0;padding: 0rpx 70rpx;font-size: 34rpx;height: 90rpx;line-height: 88rpx;border-radius: 50rpx;}
+.share-nav .oitem{border: 1rpx solid #FADFB3;background-color: transparent;color: #FADFB3;}
+.share-nav .iitem{background: linear-gradient(-270deg, #D6975E, #FDE4B9);color: #6D3700;}
+
+.share-guide .img{position: fixed;top: 0;left: 10%;z-index: 100;width: 80%;}
 
 
-/* .qrcode-bg{background: url(https://haohui-shop.doxinsoft.com/images/site/qrcode-bg.jpg);background-size: 100% 100%;width: 100%;height: 100vh;}
-.share-logo{text-align: center;padding: 30px 0;}
-.share-logo image{width: 200px;height: 47px;}
-.wechat-name{font-size: 18px;text-align: center;padding-bottom: 20px;font-weight: bold;}
-.wechat-name text{font-size: 16px;font-weight: 400;color: #333;}
-.share-qrcode{text-align: center;padding-top: 5vh;}
-.share-qrcode image{width: 200px;height: 200px;} */
 
 .share-qrcode {
     background: #fff;

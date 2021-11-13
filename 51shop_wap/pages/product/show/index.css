@@ -57,3 +57,4 @@ page,scroll-view{height: 100%;}
 
 
 .tui-number-box {padding: 40upx;box-sizing: border-box;margin-bottom: 30upx;background: #fff;font-size: 30upx;display: flex;align-items: center;justify-content: space-between;}
+.countdown-row{background-color: #fa475a;}

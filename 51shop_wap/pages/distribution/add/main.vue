@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="container" v-if="data.show">
+		<view class="bg-white"></view>
+		<view class="zIndex2" v-if="data.show">
 			<view class="template" v-if="data.can_add">
 				<view class="not-add" v-if="data.passing">
 					<view class="not-add2">
@@ -12,35 +13,26 @@
 						</navigator>
 					</view>
 				</view>
-				<view v-else>
-					<view class="validform_ajax">
-						<view class="list-group">
-							<view class="list-group-item">
-								<view class="value">填写真实信息，成为我们的合作伙伴！</view>
-							</view>
-							<view class="list-group-item">
-								<view class="value">
-									<input type="text" placeholder="请填写您的姓名" class="form-control" v-model.lazy="ruleform.name" />
-								</view>
-							</view>
-							<view class="list-group-item">
-								<view class="value">
-									<input type="text" placeholder="请填写您的手机号码" class="form-control" v-model.lazy="ruleform.phone" />
-								</view>
-							</view>
-							<view class="dx-cell dx-select select-item" @click="openCity">
-								<view class="dx-cell_bd">
-									{{ruleform.city2 ? ruleform.city2 : '请选择所在区域'}}
-								</view>
-								<view class="dx-cell_ft dx_ft-access"></view>
-							</view>
-							<view class="list-group-item">
-								<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn-big dx-btn-red" title="提交">
-								
-								</myform>
-								
-							</view>
+				<view class="write-add" v-else>
+					<view class="write_item">
+						<view class="txt">验证手机号即可注册达人！</view>
+					</view>
+					<view class="write_item">
+						<weui-input v-model="ruleform.name" type="text" placeholder="请输入姓名" name="name" datatype="require"></weui-input>
+					</view>
+					<view class="write_item">
+						<weui-input v-model="ruleform.sms" placeholder="请输入手机号" type="sms" name="sms" :phone="ruleform.phone"
+						 action="/auth/sendSms"></weui-input>
+					</view>
+					<view class="dx-cell dx-select select-item" @click="openCity">
+						<view class="dx-cell_bd">
+							<text class="value" v-if="ruleform.city2">{{ ruleform.city2}}</text>
+							<text class="label" v-else>请选择所在区域</text>
 						</view>
+						<view class="dx-cell_ft dx_ft-access"></view>
+					</view>
+					<view class="write_item">
+						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="formSubmit" myclass="dx-btn-big dx-btn-red bdr30 mt30" title="提交"></myform>
 					</view>
 				</view>
 			</view>
@@ -62,11 +54,10 @@
 	</view>
 </template>
 <style scoped="">
-@import url("xiaozhu/uniapp/font/globalFont.css");
-@import url("xiaozhu/css/dx-input.css"); 
+@import "xiaozhu/css/dx-input.css"; 
+@import "./index.css";
 </style>
 <script>
-	import "./index.css";
 	import selectCity from "@/components/selectCity.vue"
 	export default {
 		components:{selectCity},

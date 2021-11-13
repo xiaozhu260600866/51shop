@@ -8,7 +8,7 @@
 		<view v-if="data.show">
 			<view class="top-custom">
 				<view class="top-custom-box">
-					<view class="right flex1"><THeader showCity :data="data" :callBack="true" city="江门市" @callBack="$refs.selectCity.init()" title="搜索商品信息" :waterCityData="waterCityData" TcountShow noborder></THeader></view>
+					<view class="right flex1"><THeader showCity :data="data" :callBack="true" city="江门市" @callBack="goto('/pages/search/searchCity/main',1)" title="搜索商品信息" :waterCityData="waterCityData" TcountShow noborder></THeader></view>
 				</view>
 			</view>
 			<view>
@@ -49,7 +49,7 @@
 				<view class="bg-f ptb15 text-center fs-14 fc-3" @click="goto('/pages/demand/index/main',1)">点击查看更多</view>
 				
 				<view class="copyright fs-13 fc-9 m20 flex-center flex">
-					<span>版权所有：</span><span class="fc-9">51选到</span>
+					<span>版权所有：</span><span class="fc-9">广东科阅信息技术有限公司</span>
 				</view>
 			</view>
 		</view>

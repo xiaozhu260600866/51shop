@@ -4,18 +4,18 @@
 		<view>
 			<view class="dis-header">
 				<view class="head-img">
-					<image class="img" :src="distribution.heder_img"></image>
+					<image class="img" :src="data.distribution.heder_img"></image>
 				</view>
 				<view class="dis-info fc-white">
-					<view class="name fs-18">{{ distribution.name}}</view>
+					<view class="name fs-18">{{ data.distribution.name}}</view>
 					<!-- <view class="phone fs-16 mt10 Arial">{{ distribution.phone}}</view> -->
 				</view>
 			</view>
 			<view class="dis-count">
-				<view class="top flex-between flex-middle plr12">
+				<view class="top flex-between flex-middle plr12" @click="goto('/pages/distribution/commission/index',1)">
 					<view class="left text-center">
 						<view class="txt">可提现金额(元)</view>
-						<view class="num fs-24 ">0</view>
+						<view class="num fs-24 ">{{count.price_a}}</view>
 					</view>
 					<view class="right">
 						<dx-button type="primary" size="small" round>去提现</dx-button>
@@ -24,16 +24,16 @@
 				<view class="bottom flex-middle plr12 ptb20">
 					<view class="row w-b65">
 						<text class="txt">累计收益(含未到账)</text>
-						<text class="num pl5 fs-20">0</text>
+						<text class="num pl5 fs-20">{{toFixed(count.inSumAll)}}</text>
 					</view>
 					<view class="row w-b35">
 						<text class="txt">累计订单</text>
-						<text class="num pl5 fs-20">0</text>
+						<text class="num pl5 fs-20">{{data.order_sum}}</text>
 					</view>
 				</view>
 			</view>
 			<view class="dis-my">
-				<view class="dis-item">
+				<view class="dis-item" @click="goto('/pages/distribution/team/main',1)">
 					<view class="title">
 						<text class="txt">我的团队</text>
 						<text class="Arial">(0)</text>
@@ -44,7 +44,7 @@
 						<view class="txt">收益平均提升<text class="Arial">40%</text></view>
 					</view>
 				</view>
-				<view class="dis-item">
+				<view class="dis-item" @click="goto('/pages/distribution/client/main',1)">
 					<view class="title">
 						<text class="txt">我的客户</text>
 						<text class="Arial">(0)</text>
@@ -59,21 +59,21 @@
 			<view class="dis-sec m12">
 				<view class="title pb12 fs-16">玩转达人</view>
 				<view class="sec-box">
-					<view class="sec-item">
+					<view class="sec-item" @click="goto('/pages/news/show/main?id=296',1)">
 						<image class="icon" :src="getSiteName+'/images/wap/dis-icon01.png'"></image>
 						<view class="info">
 							<view class="name">达人学院</view>
 							<view class="txt">充分了解达人知识</view>
 						</view>
 					</view>
-					<view class="sec-item">
+					<view class="sec-item" @click="goto('/pages/distribution/qrcode/main',1)">
 						<image class="icon" :src="getSiteName+'/images/wap/dis-icon02.png'"></image>
 						<view class="info">
 							<view class="name">邀请达人</view>
 							<view class="txt">收益平均提升<text class="Arial">40%</text></view>
 						</view>
 					</view>
-					<view class="sec-item">
+					<view class="sec-item" @click="$refs.clientPoster.shareFc()">
 						<image class="icon" :src="getSiteName+'/images/wap/dis-icon03.png'"></image>
 						<view class="info">
 							<view class="name">邀请客户</view>
@@ -82,6 +82,10 @@
 					</view>
 				</view>
 			</view>
+			<view class="float-tag" @click="goto('/pages/index/main',2)">
+				<dx-tag Rround><text class="dxi-icon dxi-icon-home-fill fs-13 pr8"></text>首页</dx-tag>
+			</view>
+			<clientPoster :data="data" ref="clientPoster"></clientPoster>
 			<!-- <view class="sup-sec">
 				<view class="sec-group" @click="goto('/pages/distribution/order-list/main?dateSelect=today&status=-1&dis_type=0',1)">
 					<view class="icon_img"><image class="img" :src="getSiteName+'/images/wap/c2.png'"></image></view>
@@ -178,7 +182,10 @@
 
 <script>
 	import selectSimple from "xiaozhu/wechatapp/components/selectSimple";
+	import dxTag from "doxinui/components/tag/tag"
+	import clientPoster from "@/pages/distribution/client/poster/clientPoster"
 	export default {
+		components: {selectSimple,dxTag,clientPoster},
 		data() {
 			return {
 				formAction: '/shop/dis',
@@ -222,10 +229,7 @@
 			}
 		},
 		onLoad(options) {
-			//this.ajax();
-		},
-		components: {
-			selectSimple
+			this.ajax();
 		},
 		methods: {
 			ajax() {

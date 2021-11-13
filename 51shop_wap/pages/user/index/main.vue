@@ -122,7 +122,7 @@
 			<view class="ulist ugorup-box">
 				<view class="black-title">
 					<view class="name">推广收益</view>
-					<view class="more flex-middle" @click="goto(data.isDis ? '/pages/distribution/index/main' :'/pages/distribution/login/main' ,1)">
+					<view class="more flex-middle" @click="goto(data.isDis ? '/pages/distribution/index/main' :'/pages/distribution/add/main' ,1)">
 						<text>查看达人详情</text>
 						<text class="dxi-icon dxi-icon-right fs-12 pl5"></text>
 					</view>
@@ -148,12 +148,13 @@
 					</myform>
 				</view>
 			</view>
-			<view class="ugorup-box userDisAd" @click="goto(data.isDis ? '/pages/distribution/index/main' :'/pages/distribution/login/main' ,1)">
+			<view class="ugorup-box userDisAd" @click="toClient()">
 				<image class="img w-b100" :src="getSiteName+'/images/wap/userDisAd.jpg'" mode="widthFix"></image>
 			</view>
 			<view class="copyright fs-13 fc-9 m20 flex-center flex">
-				<text>版权所有：</text><text class="fc-9">51选到</text>
+				<text>版权所有：</text><span class="fc-9">广东科阅信息技术有限公司</span>
 			</view>
+			<clientPoster :data="data" ref="clientPoster"></clientPoster>
 		</view>
 	</view>
 </template>
@@ -162,8 +163,9 @@
 	import "./index.css";
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
 	import cashLists from "@/components/cashLists.vue"
+	import clientPoster from "@/pages/distribution/client/poster/clientPoster"
 	export default {
-		components:{dxNavClass,cashLists},
+		components:{dxNavClass,cashLists,clientPoster},
 		data() {
 			return {
 				formAction: '/shop/user',
@@ -204,6 +206,13 @@
 				},1500);
 			
 				
+			},
+			toClient(){
+				if(this.data.isDis){
+					return this.$refs.clientPoster.shareFc()
+				}else{
+					return this.goto('/pages/distribution/add/main',1)
+				}
 			},
 			toMerchant(){
 				uni.navigateToMiniProgram({

@@ -1,52 +1,56 @@
 <template>
-    <section>
+    <view>
         <view class="share-overlay" @click="toggleInfoDiag" v-if="infoDiag"></view>
-        <div v-if="infoDiag">
-            <view class="bd-t infoanimation choose">
-                <view class="choose-floor">
-                    <view class="choose-sit bd-b">
-                        <view class="pro-img bd-o">
-                            <image :src="siteName+'/upload/images/product/'+productInfo[infokey].pic" class="info-pic"></image>
-                        </view>
-                        <view class="choose-del"></view>
-                        <view class="choose-detail">
-                            <view class="pro-price price_color">￥
-                                <text class="info-price">{{ productInfo[infokey].price }}</text>
-                            </view>
-                            <view class="p">库存
-                                <text class="info-num">{{ productInfo[infokey].num }}</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="choose-class">
-                        <view class="class-h4 mt8">{{ productInfo[infokey].name }}</view>
-                        <view class="p">
-                            <block v-for="(item,key) in productInfo" >
-                                <span :class="['bdd',key==infokey ?  'yes-act' :'no-act']" @click="changeInfoKey(key)">{{ item.name }}</span>
-                            </block>
-                        </view>
-                        <view class="clear"></view>
-                    </view>
-                    <view class="num_wrap choose-sum bd-b" v-if="!product.hidd_buy_num">
-                        <view class="inline float_l">数量</view>
-                        <view class="float_r">
-                            <text class="iconfont icon-count-minus minus_disabled" id="minus" @click="infonum<=1 ? 1:infonum-=1"></text>
-                            <input class="num" name="num" id="buyNum" type="tel" v-model.lazy="infonum" />
-                            <text class="iconfont icon-count-plus" id="plus" @click="infonum++"></text>
-                        </view>
-                        <view class="clear"></view>
-                    </view>
-                </view>
-                <view class="button">
-                    <navigator @click="infoSubmit">确认</navigator>
-                </view>
-            </view>
-        </div>
-    </section>
+		<view class="infoanimation choose" v-if="infoDiag">
+			<view class="choose-floor">
+				<view class="choose-off flex-right fw-bold" @click="toggleInfoDiag"><text class="dxi-icon dxi-icon-off"></text></view>
+				<view class="choose-sit">
+					<view class="pro-img">
+						<image :src="siteName+'/upload/images/product/'+productInfo[infokey].pic" class="img"></image>
+					</view>
+					<view class="choose-detail fs-13">
+						<view class="pt3">
+							<view class="price lh-1">￥
+								<text class="Arial fw-bold fs-20">{{ productInfo[infokey].price }}</text>
+							</view>
+							<view class="pt5">已选择：{{ productInfo[infokey].name }}</view>
+						</view>
+						<view class="fc-7 lh-1_3">库存
+							<text class="Arial">{{ productInfo[infokey].num }}</text>
+						</view>
+					</view>
+				</view>
+				<view class="choose-class pt15">
+					<view class="fs-15 pb10">规格</view>
+					<view class="classG">
+						<block v-for="(item,key) in productInfo">
+							<view class="nav" :class="{'yes-act':key==infokey}" @click="changeInfoKey(key)">{{ item.name }}</view>
+						</block>
+					</view>
+				</view>
+				<view class="choose-num pt15" v-if="!product.hidd_buy_num">
+					<view class="fs-15">数量</view>
+					<!-- <view class="num-input">
+						<view class="nav iconfont icon-count-minus minus_disabled" id="minus" @click="infonum<=1 ? 1:infonum-=1"></view>
+						<input class="input" name="num" id="buyNum" type="tel" v-model.lazy="infonum" />
+						<view class="nav iconfont icon-count-plus" id="plus" @click="infonum++"></view>
+					</view> -->
+					<view class="num-input">
+						<tui-numberbox v-model="infonum"></tui-numberbox>
+					</view>
+				</view>
+			</view>
+			<view class="button plr15 pt10">
+				<dx-button type="primary" size="lg" round block @click="infoSubmit">确认</dx-button>
+			</view>
+		</view>
+    </view>
 </template>
 <script>
+import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox";
 export default {
     props: ["productInfo","product"],
+	components: {tuiNumberbox},
     data() {
         return {
             infokey: 0,

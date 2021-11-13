@@ -8,7 +8,7 @@
 			<weui-input v-model="ruleform.radio" label="标题1" type="switch" name="radio" datatype="require"></weui-input>
 			<weui-input v-model="ruleform.address" label="定位" type="location" name="address"></weui-input>
 			<weui-input v-model="ruleform.phone" label="电话" type="text" name="phone"></weui-input>
-			<weui-input v-model="ruleform.sms" label="定位" type="sms" name="sms" :phone="ruleform.phone" action="/auth/sendSms"></weui-input>
+			<weui-input v-model="ruleform.sms" label="电话" type="sms" name="sms" :phone="ruleform.phone" action="/auth/sendSms"></weui-input>
 			<weui-input v-model="ruleform.sendType" label="送货方式" name="sendType" changeField="value" type="radio" dataKey="sendTypeArr"
 			 :radioType="true"></weui-input>
 			<weui-input v-model="ruleform.sendType" label="送货方式" name="sendType" changeField="value" type="select" dataKey="sendTypeArr"></weui-input>

@@ -17,3 +17,5 @@
 .dis-sec .sec-item .icon{width: 60rpx;height: 60rpx;margin-right: 20rpx;}
 .dis-sec .sec-item .name{font-size: 32rpx;}
 .dis-sec .sec-item .txt{font-size: 26rpx;color: #999;}
+
+.float-tag{position: fixed;left: 0;bottom: 20%;z-index: 101;}

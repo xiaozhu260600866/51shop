@@ -1,44 +1,33 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view v-if="show">
-			
-			 <view class="share-qrcode">
-				<view class="qrcode-info">
-					<view class="center-ad">
-						<image src="https://boss.doxinsoft.com/images/app/qrcode-ad.jpg" mode="widthFix"  class="image"/>
-					</view>
-					<view class="shead-info">
-						<image :src="data.getUser.avatarUrl" />
-						<view class="shead-name">
-							<view class="p">我是
-								<text>{{data.getUser.nickName}}</text>
-							</view>
-							<view class="p">我为
-								<text>{{ data.siteConfig.web_name }}</text>代言
-							</view>
-						</view>
-						<view class="clear"></view>
-					</view>
-					<view class="qrcode">
-						<view class="p">
-							<image class="image" :src="getSiteName+'/upload/images/dis/'+data.distribution.id+'.jpg'" v-if="data.distribution" @click="previewImage(data.distribution.id+'.jpg','dis')">
-						</view>
-						<view class="p1">长按识别小程序<br>开启您的购物之旅</view>
-					</view>
-					<view id="footer-btn"><view class="f-dx-btn dx-btn-blue text-center" @click="poster">生成海报</view></view>
+		<view class="qrcode-box" v-if="show">
+			<view class="share-qrcode-bg"><!-- :style="'background-image: url('+getSiteName+'/images/wap/share-qrcode-bg.jpg);'" -->
+				<image class="img" :src="getSiteName+'/images/wap/share-qrcode-bg.jpg'" mode="widthFix"></image>
+				<view class="qrcode">
+					<image class="img" :src="getSiteName+'/upload/images/dis/'+data.distribution.id+'.jpg'" v-if="data.distribution" @click="previewImage(data.distribution.id+'.jpg','dis')">
 				</view>
-			</view> 
-			
+				<view class="share-nav">
+					<button class="item oitem" hover-class="none" @click="shareGuide = !shareGuide">分享链接</button>
+					<button class="item iitem" hover-class="none" @click="poster">生成海报</button>
+				</view>
+			</view>
+			<view class="share-guide" v-if="shareGuide">
+				<view class="share-overlay" @click="shareGuide = !shareGuide"></view>
+				<image class="img" :src="getSiteName+'/images/share-tip.png'" mode="widthFix"></image>
+			</view>
 			<image :src="share_logo" @load="imageLoad" hidden v-if="share_logo"></image>
 			<canvas :style="'width: '+width+'px; height: '+height+'px;'" canvas-id="firstCanvas"  v-if="!tempFilePath"></canvas>
 		</view>
+		<qrcodePoster></qrcodePoster>
 	</view>
 </template>
 
 <script>
 	import "./index.css";
+	import qrcodePoster from "@/pages/distribution/qrcode/poster/qrcodePoster"
 	export default {
+		components:{qrcodePoster},
 		data() {
 			return {
 				formAction: '/shop/dis',
@@ -53,7 +42,8 @@
 				height: 530,
 				share_logo:'../../../static/fenxiaobg.jpg',
 				images:[],
-				avatarUrl:''
+				avatarUrl:'',
+				shareGuide: false,
 			}
 		},
 		onReachBottom() {

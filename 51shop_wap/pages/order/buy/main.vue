@@ -1,114 +1,85 @@
 <template>
-	<view class="pb50">
+	<view class="pb60">
 		<page :parentData="data" :formAction="formAction" ref="page"></page>
 		
-		<view v-if="data.show && ruleform.fclass!=238 && ruleform.dianxin == 0">
+		<view v-if="data.show">
 			<!-- 普通订单 -->
-			<view v-if="ruleform.staff_userid" class="delivery bg-f flex-center flex-middle p15 mb10" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)">
+			<!-- <view v-if="ruleform.staff_userid" class="delivery bg-f flex-center flex-middle p15 mb10" @click="goto('/pages/order/map/main?order_no='+ruleform.order_no,1)">
 				<view class="iconfont icon-order-delivery fc-blue fs-24"></view>
 				<view class="name fs-16 pl10">配送员位置</view>
-			</view>
-			<view v-if="data.show && ruleform.type == 0">
-				<view id="address" class="order-sec plr10 mb0" v-if="ruleform.shipping !=1">
+			</view> -->
+			<view>
+				<view id="address" class="block-sec plr10 mb0" v-if="ruleform.shipping != 1">
 					<block v-if="!address">
 						<view class="add-add ptb15" @click="createAddress">
-							<p class="add-icon iconfont icon-count-plus mr10"></p>
-							<p class="add-txt fs-16">新增收货地址</p>
-							<p class="iconfont icon-right fs-12 fc-9"></p>
+							<view class="add-icon iconfont icon-count-plus mr10"></view>
+							<view class="add-txt fs-16">新增收货地址</view>
+							<view class="iconfont icon-right fs-12 fc-9"></view>
 						</view>
 					</block>
 					<block v-else>
 						<view class="add-info" @click="addressLists" v-if="address.name">
 							<view class="licon pr15">
-								<span class="iconfont icon-location fs-22 main-color"></span>
+								<text class="iconfont icon-location fs-22 main-color"></text>
 							</view>
 							<view class="info ptb10">
-								<p class="name fs-16">
-									<span>{{address.name}}</span>
-									<span class="Arial pl10">{{address.phone}}</span>
-								</p>
+								<view class="name fs-16">
+									<text>{{address.name}}</text>
+									<text class="Arial pl10">{{address.phone}}</text>
+								</view>
 								<view class="add-detail fs-15 fc-6">
-									<p class="label">地址：</p>
-									<p class="name">{{ address.province }} {{ address.city }} {{ address.area }} {{ address.address }}</p>
+									<view class="label">地址：</view>
+									<view class="name">{{ address.province }} {{ address.city }} {{ address.area }} {{ address.address }}</view>
 								</view>
 							</view>
-							<p class="iconfont icon-right fs-12 fc-9 pl15"></p>
+							<view class="iconfont icon-right fs-12 fc-9 pl15"></view>
 						</view>
 					</block>
+					<view class="pay_line">
+						<image class="img" :src="getSiteName+'/images/wap/share-tip.png'"></image>
+					</view>
 				</view>
-				<view class="pay_line bg-f mb12" v-if="ruleform.shipping !=1">
-					<image :src="getSiteName+'/images/wap/share-tip.png'"></image>
-				</view>
-				<view class="order-sec">
+				<view class="block-sec">
 					<orderPro :data="ruleform.products" url="/pages/product/show/main?id="></orderPro>
 				</view>
-				
-				<view id="mode" class="buy-info order-sec">
-					<view v-if="ruleform.shipping == 1">
-						<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
-						<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require|phone"></weui-input>
-					</view>
-					<!-- <view :class="['weui-cell','weui-cell_input','bd-be']" @click="previewImage(ruleform.order_no+'.png','order')" v-if="ruleform.status >=3">
-						<view class="weui-cell__hd">
-							<slot name="left" />
-							<view class="weui-label fs-16">券码</view>
-						</view>
-						<view class="weui-cell__bd text-right"></view>
-						<view class="weui-cell__ft flex">
-							<img :src="getSiteName+'/upload/images/order/'+ruleform.order_no+'.png'" style="width:25px;height:25px">
-							<view class="weui-cell__ft_in-access"></view>
-						</view>
-					</view> -->
-					<weui-input v-model="ruleform.shipping" name="shipping" datatype="require" label="送货方式" changeField="value" type="select"
-					 dataKey="shipping" :disabled="true" @callback="selectCallBack" v-if='ruleform.is_hot == 0'></weui-input>
-					<view :class="['weui-cell','weui-cell_input','p10','bd-be','industry']" @click="chooseMerchant" v-if="ruleform.shipping == 1 && ruleform.is_hot == 0">
-						<view class="weui-cell__hd">
-							<view class="weui-label fs-16">选择{{ruleform.type == 0? "门店":"自提点"}}<span class="fc-red">*</span></view>
-						</view>
-						<view class="weui-cell__bd">
-							<view class="fc-3 fs-16 nowrap text-right">
-								{{ ruleform.merchant_user_id ?ruleform.merchant_user_name :'请选择' }}
-							</view>
-						</view>
-						<view class="weui-cell__ft weui-cell__ft_in-access"></view>
-					</view>
-					<!-- <view class="weui-cell weui-cell_input bd-be" v-if="data.coupons && data.coupons.length == 0">
-						<view class="weui-cell__bd"><label class="fs-16">优惠券</label></view>
-						<view class="weui-cell__ft"><label class="fs-16 fc-3">无可用</label></view>
-					</view>
-					<weui-input v-model="ruleform.coupon_value" name="coupon_value" label="优惠券" changeField="value" type="select"
-					 dataKey="coupons" v-if="data.coupons && data.coupons.length > 0 && ruleform.is_hot == 0" :disabled="ruleform.status >=3 ? true :false"
-					 @callback="couponCallBack"></weui-input> -->
+				<view class="block-sec write" v-if="ruleform.shipping == 1">
+					<view class="plr15 pt20 pb10 lh-1 fs-17 fc-0">联系信息</view>
+					<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
+					<weui-input v-model="ruleform.addr_phone" label="电话" type="text" name="addr_phone" datatype="require|phone"></weui-input>
+				</view>
+				<view class="block-sec">
 					<weui-input v-model="ruleform.pay_method" name="pay_method" datatype="require" label="付款方式" changeField="value"
 					 type="select" dataKey="pay_methods"  v-if="ruleform.fclass != 109 &&ruleform.fclass != 110"></weui-input>
 					<weui-input v-model="ruleform.getPayMethod" name="pay_method" datatype="require" label="付款方式" changeField="value"
 					 type="select" :disabled="ruleform.status >=3 ? true :false" v-if="ruleform.fclass == 109 || ruleform.fclass == 110"></weui-input>
 					<weui-input v-model.lazy="ruleform.myAccount" :disabled="true" label="余额" type="text" name="name" v-if="ruleform.pay_method == 2"></weui-input>
 					<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
-					<!-- <weui-input v-model="ruleform.merchant_user_id" name="merchant_user_id" datatype="require" label="门店" changeField="value" type="select" :data="data.merchantUser" :disabled="ruleform.status >=3 ? true :false" v-if="ruleform.shipping == 1"></weui-input> -->
 
 				</view>
-				<view id="calculation" class="order-sec">
+				<view id="calculation" class="block-sec">
 					<view class="list-group">
-						<p class="txt">商品金额</p>
-						<p class="fs-16 price">￥{{ruleform.amount}}</p>
+						<view class="txt">商品金额</view>
+						<view class="fs-16 price">￥{{ruleform.amount}}</view>
 					</view>
 					<view class="list-group" v-if="ruleform.shipping == 2">
-						<p class="txt">运费</p>
-						<p class="fs-16 price">+ ￥{{ ruleform.yunfei }}</p>
+						<view class="txt">运费</view>
+						<view class="fs-16 price">+ ￥{{ ruleform.yunfei }}</view>
 					</view>
 					<!-- <view class="list-group" v-if="ruleform.coupon_value">
-						<p class="txt">优惠券</p>
-						<p class="fs-16 price">- ￥{{ ruleform.coupon_value }}</p>
+						<view class="txt">优惠券</view>
+						<view class="fs-16 price">- ￥{{ ruleform.coupon_value }}</view>
 					</view>
 					<view class="list-group">
-						<p class="txt">余额</p>
-						<p class="fs-16 price">- ￥{{ wallet}}</p>
+						<view class="txt">余额</view>
+						<view class="fs-16 price">- ￥{{ wallet}}</view>
 					</view> -->
 				</view>				
 				<view id="footer" v-if="ruleform.status == 1">
-					<view class="f_left price fs-18 plr10">￥
-						<span class="fs-24 fw-bold">{{amount}}</span>
+					<view class="f_left plr10">
+						<view class="txt">合计：</view>
+						<view class="price fw-bold">
+							￥<text class="fs-24">{{amount}}</text>
+						</view>
 					</view>
 					<view class="f_right">
 						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="submit" myclass="nav" title="提交订单"></myform>
@@ -125,83 +96,7 @@
 				
 			</view>
 			<!-- 普通订单结束 -->
-			<!-- 折扣订单 -->
-			<view v-if="data.show && ruleform.type == 1">
-				<view class="order-sec">
-					<orderPro :data="ruleform.products" url="/pages/product/show/main?id="></orderPro>
-				</view>
-				<view class="order-sec">
-					<view class="plr15 pt15 pb5 lh-1 fs-17">联系信息</view>
-					<weui-input v-model="ruleform.addr_name" label="姓名" type="text" name="addr_name" datatype="require"></weui-input>
-					<weui-input v-model="ruleform.addr_phone" label="电话" type="number" name="addr_phone" datatype="require|phone"></weui-input>
-					<!-- <weui-input v-model="ruleform.addr_address" label="地址" type="text" name="addr_address" datatype="require" v-if="ruleform.products[0].getProduct.address_require"></weui-input> -->
-				</view>
-				<view id="mode" class="buy-info order-sec">
-					<!-- <view :class="['weui-cell','weui-cell_input','bd-be']" @click="previewImage(ruleform.order_no+'.png','order')" v-if="ruleform.status >=3">
-						<view class="weui-cell__hd">
-							<slot name="left" />
-							<view class="weui-label fs-16">券码</view>
-						</view>
-						<view class="weui-cell__bd text-right"></view>
-						<view class="weui-cell__ft flex">
-							<img :src="getSiteName+'/upload/images/order/'+ruleform.order_no+'.png'" style="width:25px;height:25px">
-							<view class="weui-cell__ft_in-access"></view>
-						</view>
-					</view> -->
-					<view v-if="ruleform.type == 1">
-						<weui-input v-model="ruleform.pay_method" name="pay_method" datatype="require" label="付款方式" changeField="value"
-						 type="select" dataKey="pay_methods" :disabled=" ruleform.status>=3 ? true :false" v-if="ruleform.fclass != 109 &&
-							ruleform.fclass != 110"></weui-input>
-						<weui-input v-model.lazy="ruleform.myAccount" :disabled="true" label="余额" type="text" name="name"
-						 v-if="ruleform.pay_method == 2"></weui-input>
-						<weui-input v-model="ruleform.remark" label="买家留言" type="text" name="remark" placeholder="点击给商家留言"></weui-input>
-					</view>
-				</view>
-				<view id="calculation" class="order-sec">
-					<view class="list-group">
-						<p class="txt">商品金额</p>
-						<p class="fs-16 price">￥{{ruleform.amount}}</p>
-					</view>
-					
-					<view class="list-group" v-if="ruleform.shipping == 2">
-						<p class="txt">运费</p>
-						<p class="fs-16 price">+ ￥{{ ruleform.yunfei }}</p>
-					</view>
-					<view class="list-group" v-if="ruleform.coupon_value">
-						<p class="txt">优惠券</p>
-						<p class="fs-16 price">- ￥{{ ruleform.coupon_value }}</p>
-					</view>
-					<!-- <view class="list-group">
-						<p class="txt">余额</p>
-						<p class="fs-16 price">- ￥{{ wallet}}</p>
-					</view> -->
-				</view>
-				<view id="footer" v-if="ruleform.status == 1">
-					<view class="f_left price fs-18 plr10">￥
-						<span class="fs-24">{{amount}}</span>
-					</view>
-					<view class="f_right">
-						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="submit" myclass="nav" :title="isMoonCakeCoupon && coupons.length ? '立即使用' : '提交订单'"></myform>
-					</view>
-				</view>
-			<!-- 	<view id="footer" v-else-if="ruleform.status == 3" @click="changeOrder(ruleform)">
-					<view class="f_left"></view>
-					<view class="f_right flex-middle mlr5">
-						<view class="nav-o">申请售后</view>
-					</view>
-				</view> -->
-				<view id="footer" v-else-if="ruleform.status == 5">
-					<view class="f_left"></view>
-					<view class="f_right flex-middle mlr5">
-						<!-- <view class="nav-o" @click="goto('/pages/order/after-sale/main?order_no='+ruleform.order_no,1)">售后</view> -->
-						<view class="nav" @click="canReceipt">确认收货</view>
-					</view>
-				</view>
-				<view id="footer" class="bd-t" v-else>
-					<view class="f_left"></view>
-					<view class="f_right flex-middle mlr5"><view class="nav-o">完成</view></view>
-				</view>
-			</view>
+			
 		</view>
 		<view v-else-if="data.show && ruleform.fclass ==106 && ruleform.dianxin == 0">
 			<coupon :ruleform="ruleform" :data="data" :amount="amount" :vaildate="vaildate"></coupon>
@@ -210,21 +105,12 @@
 </template>
 <script>
 	import dxAddress from "xiaozhu/uniapp/components/addressAndCity";
-	import "./index.css";
 	import other from "./layouts/other";
-	import dianxin from "./layouts/dianxin";
 	import coupon from "./layouts/coupon";
 	import uParse from '@/components/gaoyia-parse/parse.vue'
 	import orderPro from "@/components/orderPro";
 	export default {
-		components: {
-			other,
-			dianxin,
-			coupon,
-			uParse,
-			orderPro,
-			dxAddress
-		},
+		components: {other,coupon,uParse,orderPro,dxAddress},
 		data() {
 			return {
 				formAction: '/shop/order/detail',
@@ -237,74 +123,12 @@
 					{label: '自提',value: 1},
 					{label: '送货上门',value: 2},
 				],
-				shipping2: [
-					{label: '送货上门（满50元免配送费）',value: 2},
-				],
-				sendTypeArr: [
-					{label: '配送到户',value: '配送到户',},
-					{label: '退回商家（3折）',value: '退回商家（3折）',},
-					{label: '公益赠送',value: '公益赠送'},
-				],
+				
 				pay_methods: [
-					/* {label: '翼支付',value: 3}, */
 					{label: '微信支付',value: 1},
 					 {label: '余额支付',value: 2},
 				],
-				bucketTypeArr: [
-					{label: '回桶',value: '回桶'},
-					// {label: '押桶',value: '押桶'},
-					{label: '买桶',value: '买桶'},
-				],
-				exchangeSonArr: [
-					{label: '华山泉*4',value: '华山泉*4',amount:0},
-					{label: '其他品牌',value: '其他品牌',amount:10},
-				],
-				orderBrandArr: [
-					{label: '华山泉',value: '华山泉'},
-					{label: '红百立',value: '红百立'},
-					{label: '绿百立',value: '绿百立'},
-					{label: '全清纯',value: '全清纯'},
-					{label: '七翁井',value: '七翁井'},
-					{label: '七井清泉',value: '七井清泉'},
-					{label: '怡宝',value: '怡宝'},
-					{label: '加伦加',value: '加伦加'},
-					{label: '长寿村',value: '长寿村'},
-					{label: '一品怡',value: '一品怡'},
-					{label: '农夫山泉',value: '农夫山泉'},
-					{label: '鼎湖山泉',value: '鼎湖山泉'},
-					{label: '屈臣氏',value: '屈臣氏'},
-				],
-				orderNumArr: [
-					{label: '1',value: '1'},
-					{label: '2',value: '2'},
-					{label: '3',value: '3'},
-					{label: '4',value: '4'},
-					{label: '5',value: '5'},
-					{label: '6',value: '6'},
-					{label: '7',value: '7'},
-					{label: '8',value: '8'},
-					{label: '9',value: '9'},
-				],
-				bucketNumArr: [
-					{label: '1个 50元',value: '1个 50元',amount:50},
-					{label: '2个 100元',value: '2个 100元',amount:100},
-					{label: '3个 150元',value: '3个 150元',amount:150},
-					{label: '4个 200元',value: '4个 200元',amount:200},
-					{label: '5个 250元',value: '5个 250元',amount:250},
-					{label: '6个 300元',value: '6个 300元',amount:300},
-					{label: '7个 350元',value: '7个 350元',amount:350},
-					{label: '8个 400元',value: '8个 400元',amount:400},
-					{label: '9个 450元',value: '9个 450元',amount:450},
-					{label: '10个 500元',value: '10个 500元',amount:500},
-				],
-				ruleform: {
-					bucketType:1,
-					echange: 1,
-					orderNum: '1',
-					need:'须知须知须知须知须知须知',
-					yatong:'华山泉*4',
-					maitong:'华山泉*4',
-				},
+				ruleform: {},
 				vaildate: {},
 				ps_timeArr: [],
 				actIndex: 0,
@@ -678,3 +502,6 @@
 		}
 	}
 </script>
+<style>
+@import "./index.css";
+</style>
