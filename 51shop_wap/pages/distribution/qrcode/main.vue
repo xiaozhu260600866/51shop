@@ -9,7 +9,7 @@
 				</view>
 				<view class="share-nav">
 					<button class="item oitem" hover-class="none" @click="shareGuide = !shareGuide">分享链接</button>
-					<button class="item iitem" hover-class="none" @click="poster">生成海报</button>
+					<button class="item iitem" hover-class="none" @click="$refs.qrcodePoster.shareFc()">生成海报</button>
 				</view>
 			</view>
 			<view class="share-guide" v-if="shareGuide">
@@ -19,7 +19,7 @@
 			<image :src="share_logo" @load="imageLoad" hidden v-if="share_logo"></image>
 			<canvas :style="'width: '+width+'px; height: '+height+'px;'" canvas-id="firstCanvas"  v-if="!tempFilePath"></canvas>
 		</view>
-		<qrcodePoster></qrcodePoster>
+		<qrcodePoster ref="qrcodePoster"></qrcodePoster>
 	</view>
 </template>
 
