@@ -101,11 +101,11 @@ import 'provider.js';
 
 
 
-//uni.setStorageSync('siteName', 'https://www.lmssht456.com');
+//uni.setStorageSync('siteName',);
 
 uni.setStorageSync('siteName', 'https://51shop.doxinsoft.com');
 
-wx.setStorageSync('site_name', 456);
+wx.setStorageSync('site_name', '51shop');
 uni.removeStorageSync('jsdk');
 uni.removeStorageSync('distribution');
 uni.removeStorageSync('merchantUserId');
@@ -115,15 +115,8 @@ uni.removeStorageSync('proid');
 App.mpType = 'app'
 
 
-import '@/public/css/app.css';
-import 'xiaozhu/wechatapp/css/global.css';
-import 'doxinui/css/global_upx.css';
-import 'doxinui/css/global_icon.css';
-import 'xiaozhu/wechatapp/css/flex.css';
-import '@/public/weui/weui.css';
-import "@/public/font/iconfont.css";
-
 const app = new Vue({
 	...App
 })
+
 app.$mount()

@@ -15,6 +15,12 @@
 </script>
 
 <style>
+	@import url('@/public/css/app.css');
+	@import url('doxinui/css/global_upx.css');
+	@import url('doxinui/css/global_icon.css');
+	@import url('@/public/weui/weui.css');
+	@import url("@/public/font/iconfont.css");
+	
 	/*每个页面公共css */
 	/*  #ifdef  MP-WEIXIN */
 	/*  #endif  */
