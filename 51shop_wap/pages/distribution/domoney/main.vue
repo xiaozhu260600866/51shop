@@ -33,7 +33,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxftButton from "doxinui/components/button/footer-button"
 	export default {
 		components:{dxftButton},
@@ -116,3 +115,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

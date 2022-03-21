@@ -64,7 +64,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import THeader from '@/components/THeader';
 	import proLists from "@/components/proLists";
 	import demandLists from "@/components/demandLists";
@@ -258,3 +257,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

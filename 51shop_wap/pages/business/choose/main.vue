@@ -54,7 +54,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import filterKm from '@/components/filterKm';
 	export default {
 		data() {
@@ -102,3 +101,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

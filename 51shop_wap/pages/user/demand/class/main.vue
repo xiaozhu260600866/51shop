@@ -26,7 +26,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxDivider from "doxinui/components/divider/divider"
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
 	export default {
@@ -84,3 +83,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

@@ -60,7 +60,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import marque from "xiaozhu/uniapp/components/marque";
 	import THeader from '@/components/THeader';
 	import productLists from "@/components/productLists";
@@ -184,3 +183,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

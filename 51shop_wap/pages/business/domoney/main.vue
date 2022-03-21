@@ -36,7 +36,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import diag from "xiaozhu/wechatapp/components/diag";
 	export default {
 		data() {
@@ -109,3 +108,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

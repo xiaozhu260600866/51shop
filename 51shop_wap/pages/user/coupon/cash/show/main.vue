@@ -44,7 +44,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxTabs from "doxinui/components/tabs/tabs"
 	import dxTitle from "doxinui/components/title/title"
 	import dxftButton from "doxinui/components/button/footer-button"
@@ -97,3 +96,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxTabs from "doxinui/components/tabs/tabs"
 	import cashLists from "@/components/cashLists.vue"
 	export default {
@@ -84,3 +83,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

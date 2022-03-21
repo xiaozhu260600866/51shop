@@ -120,5 +120,5 @@ import dxTabsDate from "doxinui/components/tabs/tabs_date"
 	}
 </script>
 <style>
-@import "./index.css";
+@import url("index.css");
 </style>

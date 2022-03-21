@@ -47,7 +47,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import tuiIcon from "xiaozhu/uniapp/thorui/components/icon/icon"
 	import tuiDrawer from "xiaozhu/uniapp/thorui/components/drawer/drawer"
 	import tuiLoadmore from "xiaozhu/uniapp/thorui/components/loadmore/loadmore"
@@ -304,3 +303,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

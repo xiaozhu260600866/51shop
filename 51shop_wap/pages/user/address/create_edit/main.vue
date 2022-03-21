@@ -32,14 +32,10 @@
 		<selectCity ref="selectCity" title="请选择所在区域" :ruleform="ruleform" :townArr="townArr" :cityArr="cityArr" :provinceArr="provinceArr" :areaArr="areaArr" @callBack="cityCallBack"></selectCity>
 	</view>
 </template>
-<style scoped="">
-@import url("xiaozhu/uniapp/font/globalFont.css");
-@import url("xiaozhu/css/dx-input.css"); 
-</style>
 <script>
 	import dxAddress from "xiaozhu/uniapp/components/addressAndCity";
 	import selectCity from "@/components/selectCity.vue"
-	import "./index.css";
+	
 	export default {
 		components:{
 			dxAddress,selectCity
@@ -178,3 +174,9 @@
 		}
 	}
 </script>
+
+<style>
+@import url("xiaozhu/uniapp/font/globalFont.css");
+@import url("xiaozhu/css/dx-input.css"); 
+@import  url("./index.css");
+</style>

@@ -55,7 +55,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import businessLists from '@/components/business_lists';
 	import THeader from '@/components/THeader';
 	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
@@ -163,3 +162,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

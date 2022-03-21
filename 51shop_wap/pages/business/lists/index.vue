@@ -21,7 +21,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 	import businessLists from '@/components/business_lists';
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
@@ -75,3 +74,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

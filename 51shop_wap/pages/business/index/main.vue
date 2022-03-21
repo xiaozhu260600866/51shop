@@ -123,7 +123,6 @@
 
 <script>
 	import selectSimple from "xiaozhu/uniapp/components/selectSimple";
-	import "@/public/css/uindex.css";
 	export default {
 		data() {
 			return {
@@ -178,3 +177,7 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+@import url("@/public/css/uindex.css");
+</style>

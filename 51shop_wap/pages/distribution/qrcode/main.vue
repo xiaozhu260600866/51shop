@@ -24,7 +24,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import qrcodePoster from "@/pages/distribution/qrcode/poster/qrcodePoster"
 	export default {
 		components:{qrcodePoster},
@@ -158,3 +157,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

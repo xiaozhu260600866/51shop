@@ -41,6 +41,6 @@
 		
 	}
 </script>
-<style scoped="">
-@import url('index.css')
+<style>
+@import url('index.css');
 </style>

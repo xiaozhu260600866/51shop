@@ -56,7 +56,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import searchHeader from '@/components/searchHeader2';
 	import productLists from "@/components/productLists";
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
@@ -161,3 +160,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

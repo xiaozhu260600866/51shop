@@ -14,7 +14,6 @@
 	import demandLists from "@/components/demandLists";
 	import dxftButton from "doxinui/components/button/footer-button"
 	import dxTabs from "doxinui/components/tabs/tabs"
-	import "./index.css";
 	export default {
 		components: {demandLists,dxftButton,dxTabs},
 		data() {
@@ -58,3 +57,6 @@
 		
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

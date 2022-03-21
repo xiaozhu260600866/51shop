@@ -61,7 +61,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
 	export default {
 		components: {
@@ -163,3 +162,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

@@ -24,7 +24,6 @@
 </template>
 
 <script>
-	import "./form.css";
 	export default {
 		data() {
 			return {
@@ -142,3 +141,6 @@
 		}
 	}
 </script>
+<style>
+@import url("form.css");
+</style>

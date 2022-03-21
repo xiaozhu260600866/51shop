@@ -105,6 +105,6 @@ export default {
 
 }
 </script>
-<style scoped>
+<style>
 @import url("info.css");
 </style>

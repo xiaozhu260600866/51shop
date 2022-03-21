@@ -61,7 +61,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import tuiRate from "xiaozhu/uniapp/thorui/components/rate/rate"
 	import dxListCell from "doxinui/components/list-cell/list-cell"
 	export default {
@@ -111,3 +110,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

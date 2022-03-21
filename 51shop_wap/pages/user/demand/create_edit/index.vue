@@ -102,7 +102,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxftButton from "doxinui/components/button/footer-button"
 	import selectCity from "@/components/selectCity.vue"
 	export default {
@@ -359,6 +358,6 @@
 <style scoped="">
 @import url("xiaozhu/uniapp/font/globalFont.css");
 @import url("xiaozhu/css/dx-input.css"); 
-
+@import url("index.css");
 </style>
 

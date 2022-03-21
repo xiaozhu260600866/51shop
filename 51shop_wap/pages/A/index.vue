@@ -10,7 +10,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	export default {
 		components: { },
 		data() {
@@ -167,3 +166,6 @@
 		
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

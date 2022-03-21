@@ -160,7 +160,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
 	import cashLists from "@/components/cashLists.vue"
 	import clientPoster from "@/pages/distribution/client/poster/clientPoster"
@@ -259,3 +258,6 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

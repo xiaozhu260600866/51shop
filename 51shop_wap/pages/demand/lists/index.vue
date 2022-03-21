@@ -23,7 +23,6 @@
 	import demandLists from "@/components/demandLists";
 	import dxTabsScroll from "doxinui/components/tabs/tabs_scroll"
 	import dxNavClass from "doxinui/components/nav-class/nav-class"
-	import "./index.css";
 	export default {
 		components: {demandLists,dxTabsScroll,dxNavClass},
 		data() {
@@ -155,3 +154,6 @@
 		
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

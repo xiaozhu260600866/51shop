@@ -88,7 +88,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import orderPro from "@/components/orderPro";
 	export default {
 		components:{
@@ -160,3 +159,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

@@ -113,7 +113,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxListCell from "doxinui/components/list-cell/list-cell"
 	import dxTitle from "doxinui/components/title/title"
 	import demandLists from "@/components/demandLists";
@@ -218,3 +217,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

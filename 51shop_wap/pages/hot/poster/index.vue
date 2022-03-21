@@ -18,7 +18,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	const ctx = uni.createCanvasContext('firstCanvas')
 	export default {
 		data() {
@@ -187,3 +186,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

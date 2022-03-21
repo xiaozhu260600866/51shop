@@ -81,7 +81,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxTitle from "doxinui/components/title/title"
 	export default {
 		components:{dxTitle},
@@ -132,3 +131,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

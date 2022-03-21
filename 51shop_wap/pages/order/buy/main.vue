@@ -503,5 +503,5 @@
 	}
 </script>
 <style>
-@import "./index.css";
+@import url("index.css");
 </style>

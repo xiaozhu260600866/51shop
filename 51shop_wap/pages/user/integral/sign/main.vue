@@ -72,8 +72,6 @@
 
 <script>
 	import selectSimple from "xiaozhu/uniapp/components/selectSimple";
-	
-	import "./index.css";
 	export default {
 		components:{
 			 selectSimple
@@ -222,3 +220,6 @@
 		
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

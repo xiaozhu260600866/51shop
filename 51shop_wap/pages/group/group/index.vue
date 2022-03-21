@@ -215,7 +215,6 @@
 
 <script>
 	import "./index.css";
-	import "../show/index.css";
 	import leftTime from "../show/layouts/left_time";
 	import info from '../show/layouts/info'
 	import uParse from '@/components/gaoyia-parse/parse.vue'
@@ -288,3 +287,7 @@
 		},
 	}
 </script>
+<style>
+@import url("index.css");
+@import url("../show/index.css");
+</style>

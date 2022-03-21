@@ -120,8 +120,6 @@
 </template>
 
 <script>
-	import "./index.css";
-	import "@/components/gaoyia-parse/parse.css";
 	import uParse from '@/components/gaoyia-parse/parse.vue'
 	import sharePro from "@/components/poster/sharePro.vue";
 	export default {
@@ -230,5 +228,6 @@
 	}
 </script>
 <style>
-
+@import url("./index.css");
+@import url("@/components/gaoyia-parse/parse.css");
 </style>

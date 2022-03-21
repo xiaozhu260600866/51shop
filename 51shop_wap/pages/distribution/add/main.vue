@@ -54,8 +54,8 @@
 	</view>
 </template>
 <style scoped="">
-@import "xiaozhu/css/dx-input.css"; 
-@import "./index.css";
+@import url("xiaozhu/css/dx-input.css"); 
+@import url("./index.css");
 </style>
 <script>
 	import selectCity from "@/components/selectCity.vue"

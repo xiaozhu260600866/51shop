@@ -11,7 +11,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import productLists from "@/components/productLists";
 	import selectCity from "@/components/selectCity.vue"
 	export default {
@@ -94,3 +93,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

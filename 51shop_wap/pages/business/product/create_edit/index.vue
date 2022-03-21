@@ -32,7 +32,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	export default {
 		 watch: {
 		　　ruleform: {
@@ -120,3 +119,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

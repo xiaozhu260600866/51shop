@@ -44,7 +44,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import dxTabs from "doxinui/components/tabs/tabs"
 	export default {
 		components:{dxTabs},
@@ -84,3 +83,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

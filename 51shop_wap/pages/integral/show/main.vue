@@ -30,8 +30,6 @@
 </template>
 
 <script>
-	import "./index.css";
-	import "@/components/gaoyia-parse/parse.css";
 	import uParse from '@/components/gaoyia-parse/parse.vue'
 	export default {
 		data() {
@@ -78,3 +76,7 @@
 		}
 	}
 </script>
+<style>
+@import url("./index.css");
+@import url("@/components/gaoyia-parse/parse.css");
+</style>

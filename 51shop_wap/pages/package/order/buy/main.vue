@@ -68,8 +68,6 @@
 	</view>
 </template>
 <script>
-	import "./index.css";
-	import "xiaozhu/css/dx-input.css";
 	import orderPro from "@/components/orderPro";
 	export default {
 		components:{orderPro},
@@ -271,3 +269,7 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+@import url("xiaozhu/css/dx-input.css");
+</style>

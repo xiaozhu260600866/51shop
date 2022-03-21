@@ -55,7 +55,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	import searchType from "@/components/searchType"
 	export default {
 		components:{
@@ -125,3 +124,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>

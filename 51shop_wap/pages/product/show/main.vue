@@ -222,8 +222,6 @@
 </template>
 
 <script>
-	import "./index.css";
-	import "@/components/gaoyia-parse/parse.css";
 	import uParse from '@/components/gaoyia-parse/parse.vue'
 	import tuiNumberbox from "xiaozhu/uniapp/thorui/components/numberbox/numberbox"
 	import info from './layouts/info'
@@ -445,5 +443,7 @@
 	}
 </script>
 <style>
+@import url("./index.css");
 @import url("../show2/index.css");
+@import url("@/components/gaoyia-parse/parse.css");
 </style>

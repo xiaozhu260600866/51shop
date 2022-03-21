@@ -23,7 +23,6 @@
 </template>
 
 <script>
-	import "./index.css";
 	export default {
 		data() {
 			return {
@@ -67,3 +66,6 @@
 		}
 	}
 </script>
+<style>
+@import url("index.css");
+</style>
