@@ -8,12 +8,12 @@
 			<view class="item"@click="goto('',1)">下架信息<text class="price">0</text>条</view>
 		</view> -->
 		<view class="tsearch" :class="[noborder?'noborder':'',myclass]">
-			<view class="lcity" @click="to" v-if="showCity">
-				<text class="licon dxi-icon dxi-icon-location-fill main-color"></text>
+			<view class="lcity fc-white" @click="to" v-if="showCity">
+				<!-- <text class="licon dxi-icon dxi-icon-location-fill"></text> -->
 				<text class="txt fw-bold">{{waterCityData ?waterCityData.area : city}}</text>
 				<text class="ricon dxi-icon dxi-icon-down"></text>
 			</view>
-			<view class="searchInput bg-f plr10 ptb5 flex1" @click="goto(searchUrl ? searchUrl :'/pages/search/product/main',1)">
+			<view class="searchInput plr10 ptb5 flex1" @click="goto(searchUrl ? searchUrl :'/pages/search/product/main',1)">
 				<view class="searchbox fc-9 plr15 flex-middle">
 					<text class="iconfont icon-search fs-13 pr5"></text>
 					<text class="search-text fs-13 flex1 nowrap">{{ title ? title:'搜索内容'}}</text>
@@ -47,11 +47,11 @@
 <style>
 .searchbox {display: flex;align-items: center;overflow: hidden;z-index: 999;position: relative;}
 /* 普通搜索 */
-.tsearch{width: 100%;z-index: 10;display: flex;align-items: center;background-color: #fff;font-size: 30rpx;border-bottom: 1rpx #eee solid;}
+.tsearch{width: 100%;z-index: 10;display: flex;align-items: center;font-size: 30rpx;border-bottom: 1rpx #eee solid;}
 .tsearch.noborder{border-bottom: 0;}
 .tsearch .lcity{padding: 0 10rpx 0 20rpx;color: #666;}
 .tsearch .lcity .licon{font-size: 30rpx;padding-right: 10rpx;}
 .tsearch .lcity .ricon{font-size: 24rpx;padding: 0 16rpx;}
-.tsearch .searchbox{height: 64rpx;line-height: 64rpx;width: 100%;border-radius: 32rpx;font-size: 24rpx;background-color: #f7f8fa;}
+.tsearch .searchbox{height: 68rpx;line-height: 68rpx;width: 100%;border-radius: 34rpx;font-size: 24rpx;background-color: #f7f8fa;}
 
 </style>

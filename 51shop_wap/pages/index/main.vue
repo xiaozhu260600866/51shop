@@ -7,21 +7,26 @@
 		</page>
 		<view v-if="data.show">
 			<view class="top-custom">
-				<view class="top-custom-box">
-					<view class="right flex1"><THeader showCity :data="data" :callBack="true" city="江门市" @callBack="goto('/pages/search/searchCity/main',1)" title="搜索商品信息" :waterCityData="waterCityData" TcountShow noborder></THeader></view>
-				</view>
+				<THeader showCity :data="data" :callBack="true" city="江门市" @callBack="goto('/pages/search/searchCity/main',1)" title="搜索商品信息" :waterCityData="waterCityData" TcountShow noborder></THeader>
 			</view>
 			<view>
-				<view class="groupAd">
-					<myswiper :data="data.ad1"></myswiper>
+				<view class="swiper_box">
+					<myswiper :data="data.ad1" myclass="pt0"></myswiper>
 				</view>
-				<view class="mb8">
-					<view class="InavClass">
-						<dx-nav-class :data="data.location" :num="4" :namePTop="0" :imgWidth="40" :imgHeight="40" :itemPadding="5" @click="childrenNav"></dx-nav-class>
+				<view class="InavClass mb10">
+					<dx-nav-class :data="data.location" :num="4" :namePTop="5" :imgWidth="46" :imgHeight="46" :itemPadding="5" :nameSize="14"
+					 @click="childrenNav"></dx-nav-class>
+				</view>
+				<view class="pro-scroll m12 bdr12">
+					<view class="top flex-right pr15 pt20">
+						<view class="num fs-11 fc-white">9<text>+</text></view>
+						<view class="fs-14 fc-9 flex-center lh-1">更多<text class="dxi-icon dxi-icon-right fs-11 pt2"></text></view>
 					</view>
+					<dx-products-scroll :data="lists" :itemWidth="150" imgHeight="220rpx" imageField="firstCover" imgR="12rpx" :nameSize="12" :priceSize="15"
+					 bgColor="transparent" :itemLRMargin="3"></dx-products-scroll>
 				</view>
 				<view class="infoGroup">
-					<view class="tit plr15 pt15 pb5 bg-f flex-between">
+					<view class="tit plr15 pt15 pb5 flex-between">
 						<view class="name fs-18">限时抢购</view>
 						<view class="countdown flex-middle">
 							<view class="text pr3">剩余</view>
@@ -30,7 +35,7 @@
 							<view class="text pl3">结束</view>
 						</view>
 					</view>
-					<proLists :data="lists"></proLists>
+					<proLists :data="lists" isList></proLists>
 				</view>
 				<view class="infoGroup">
 					<view class="groupAd" >
@@ -72,8 +77,9 @@
 	import selectCity from "@/components/selectCity.vue"
 	import dxDiag from "doxinui/components/diag/diag"
 	import tuiCountdown from "xiaozhu/uniapp/thorui/components/countdown/countdown";
+	import dxProductsScroll from "doxinui/components/products/scroll"
 	export default {
-		components: {THeader,proLists,demandLists,dxNavClass,businessLists,selectCity,dxDiag,tuiCountdown},
+		components: {THeader,proLists,demandLists,dxNavClass,businessLists,selectCity,dxDiag,tuiCountdown,dxProductsScroll},
 		data() {
 			return {
 				formAction: '/shop/wapindex2',
@@ -107,6 +113,18 @@
 					{cover:'https://51shop.doxinsoft.com/images/site/tt00.jpg'}
 				],
 				lists:[{
+					firstCover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					price:'42.9',
+					new_price:'131',
+					id:'4619',
+				},{
+					firstCover:'/static/fenxiaobg.jpg',
+					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
+					price:'42.9',
+					new_price:'131',
+					id:'4619',
+				},{
 					firstCover:'/static/fenxiaobg.jpg',
 					name:'「新品焖锅」低至42.9元，秒131元『凯苑名菜』双人超值套餐',
 					price:'42.9',

@@ -53,4 +53,14 @@
 .buy-detail-nav .nav:last-child{border-right: 0;}
 .buy-detail-nav .dix-icon{color: #434343;}
 .buy-detail-nav .txt{font-size: 30rpx;color: #434343;}
+
+
+/* 商户详情 */
+.storeInfo{display: flex;align-items: center;padding: 30rpx 0;margin: 0 30rpx;border-bottom: 1rpx #eee solid;}
+.storeInfo:last-child{border-bottom: 0;}
+.storeInfo .left{flex: 1;}
+.storeInfo .right{display: flex;align-items: center;}
+.storeInfo .item{text-align: center;margin-left: 40rpx;}
+.storeInfo .icon{font-size: 32rpx;}
+.storeInfo .txt{font-size: 22rpx;color: #777;}
 /* =========== 2021-10-29 详情 =========== */

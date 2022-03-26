@@ -10,30 +10,61 @@
 				</view>
 			</block>
 			<view class="buy-detail">
-				<view class="buy-detail-title">
+				<view class="buy-detail-title pb0">
 					<view class="name">商品信息</view>
 				</view>
-				<view class="buy-detail-con">
+				<!-- <view class="buy-detail-con">
 					<view class="name wrap3" v-for="item in ruleform.products">{{item.getProduct.name}}</view>
-				</view>
+				</view> -->
+				<orderPro :data="ruleform.products" myclass="plr15" url="/pages/product/show/main?id=" isDetail></orderPro>
 				<view class="buy-detail-nav">
-					<button hover-class="none" class="nav" openType="contact">
+					<!-- <button hover-class="none" class="nav" openType="contact">
 						<text class="dxi-icon dxi-icon-message-fill pr8 fc-orange"></text>
 						<text class="txt">在线客服</text>
-					</button>
+					</button> -->
 					<button hover-class="none" class="nav" @click="phone('0750-3336888')">
-						<text class="dxi-icon dxi-icon-tel-fill pr8 fc-5"></text>
+						<text class="iconfont icon-buy-tel pr8 fc-5"></text>
 						<text class="txt">电话客服</text>
 					</button>
 				</view>
 			</view>
 			<view class="buy-detail">
 				<view class="buy-detail-title">
-					<view class="name">二维码核销</view>
+					<view class="name">批量核销</view>
 				</view>
 				<view class="buy-detail-con buy-detail-qrcode text-center">
 					<image class="img w-b80" :src="getSiteName+'/upload/images/order/'+ruleform.order_no+'.png'" mode="widthFix"></image>
-					<view class="fs-14 fc-6 text-center">出示二维码给商家消费订单</view>
+					<view class="fs-14 fc-6 text-center">出示该二维码即可消费多个订单</view>
+				</view>
+			</view>
+			<view class="buy-detail">
+				<view class="buy-detail-title">
+					<view class="name">单个核销</view>
+				</view>
+				<view class="buy-detail-row">
+					<view class="row" v-for="v in cancelL">
+						<view class="left">电子码：<text class="num fs-17 fw-bold" :class="[v.status?'fc-9 cprice':'fc-1']">{{v.order_no}}</text></view>
+						<view class="con" :class="[v.status?'fc-9':'']">{{v.status?'已完成':'待核销'}}</view>
+						<view class="right"><text class="dxi-icon dxi-icon-qrcode"></text></view>
+					</view>
+				</view>
+			</view>
+			<view class="buy-detail">
+				<view class="storeInfo" v-for="item in storeL">
+					<view class="left">
+						<view class="name fs-15 fw-bold">{{item.name}}</view>
+						<view class="address fs-13 lh-1_3 mt5 fc-4">{{item.address}}</view>
+					</view>
+					<view class="right">
+						<view class="item">
+							<view class="icon dxi-icon dxi-icon-navigation"></view>
+							<view class="txt">导航</view>
+						</view>
+						<view class="item">
+							<view class="icon dxi-icon dxi-icon-tel-fill2"></view>
+							<view class="txt">电话</view>
+						</view>
+					</view>
 				</view>
 			</view>
 			<view class="buy-detail">
@@ -120,7 +151,9 @@
 </template>
 
 <script>
+	import orderPro from "@/components/orderPro";
 	export default {
+		components:{orderPro},
 		data() {
 			return {
 				formAction: '/shop/order/detail',
@@ -129,69 +162,18 @@
 				getSiteName: this.getSiteName(),
 				maskCheck:false,
 				value: 1,
-				shipping: [
-					{label: '自提',value: 1},
-					{label: '送货上门',value: 2},
-				],
-				shipping2: [
-					{label: '送货上门（满50元免配送费）',value: 2},
-				],
-				sendTypeArr: [
-					{label: '配送到户',value: '配送到户',},
-					{label: '退回商家（3折）',value: '退回商家（3折）',},
-					{label: '公益赠送',value: '公益赠送'},
-				],
 				pay_methods: [
 					/* {label: '翼支付',value: 3}, */
 					{label: '微信支付',value: 1},
-					 {label: '余额支付',value: 2},
+					{label: '余额支付',value: 2},
 				],
-				bucketTypeArr: [
-					{label: '回桶',value: '回桶'},
-					// {label: '押桶',value: '押桶'},
-					{label: '买桶',value: '买桶'},
+				cancelL:[
+					{order_no:9962382748011,status:1},
+					{order_no:9962382748052,status:0},
 				],
-				exchangeSonArr: [
-					{label: '华山泉*4',value: '华山泉*4',amount:0},
-					{label: '其他品牌',value: '其他品牌',amount:10},
-				],
-				orderBrandArr: [
-					{label: '华山泉',value: '华山泉'},
-					{label: '红百立',value: '红百立'},
-					{label: '绿百立',value: '绿百立'},
-					{label: '全清纯',value: '全清纯'},
-					{label: '七翁井',value: '七翁井'},
-					{label: '七井清泉',value: '七井清泉'},
-					{label: '怡宝',value: '怡宝'},
-					{label: '加伦加',value: '加伦加'},
-					{label: '长寿村',value: '长寿村'},
-					{label: '一品怡',value: '一品怡'},
-					{label: '农夫山泉',value: '农夫山泉'},
-					{label: '鼎湖山泉',value: '鼎湖山泉'},
-					{label: '屈臣氏',value: '屈臣氏'},
-				],
-				orderNumArr: [
-					{label: '1',value: '1'},
-					{label: '2',value: '2'},
-					{label: '3',value: '3'},
-					{label: '4',value: '4'},
-					{label: '5',value: '5'},
-					{label: '6',value: '6'},
-					{label: '7',value: '7'},
-					{label: '8',value: '8'},
-					{label: '9',value: '9'},
-				],
-				bucketNumArr: [
-					{label: '1个 50元',value: '1个 50元',amount:50},
-					{label: '2个 100元',value: '2个 100元',amount:100},
-					{label: '3个 150元',value: '3个 150元',amount:150},
-					{label: '4个 200元',value: '4个 200元',amount:200},
-					{label: '5个 250元',value: '5个 250元',amount:250},
-					{label: '6个 300元',value: '6个 300元',amount:300},
-					{label: '7个 350元',value: '7个 350元',amount:350},
-					{label: '8个 400元',value: '8个 400元',amount:400},
-					{label: '9个 450元',value: '9个 450元',amount:450},
-					{label: '10个 500元',value: '10个 500元',amount:500},
+				storeL:[
+					{name:'大漠风炭火烤肉自助餐厅',address:'广东省江门市蓬江区汇悦大融城三楼炭火烤肉自助餐厅'},
+					{name:'大漠风炭火烤肉自助餐厅江海万达店',address:'广东省江门市江海区万达广场四楼大漠风炭火烤肉自助餐厅'},
 				],
 				ruleform: {
 					bucketType:1,

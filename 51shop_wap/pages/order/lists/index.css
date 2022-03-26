@@ -6,11 +6,11 @@
 
 
 /* 列表 */
-.pro_info{background: #fff;}
-.pro_info .order_date{height: 80upx;line-height: 80upx;display: flex;justify-content: space-between;}
+.pro_info{background: #fff;margin: 24rpx;border-radius: 24rpx;padding: 0 30rpx;}
+.pro_info .order_date{display: flex;justify-content: space-between;line-height: 40rpx;padding-top: 24rpx;}
 .pro_info .order_info{display: flex;}
 .pro_info .order_info .pro_img .img{width: 160upx;height: 160upx;display: flex;border-radius: 10upx;}
-.pro_info .order_count{height: 80upx;line-height: 80upx;display: flex;justify-content: flex-end;}
+.pro_info .order_count{display: flex;justify-content: flex-end;}
 .pro-qrcode.weui-cell:before{border: 0;}
 
 

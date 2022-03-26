@@ -12,19 +12,19 @@ button::after{border: 0;}
 
 
 /* 主题 */
-.main-color{color: #d30802!important;}
-.main-bg{background: #d30802!important;}
-.main-border{border-color: #d30802!important;}
+.main-color{color: #FE8138!important;}
+.main-bg{background: #FE8138!important;}
+.main-border{border-color: #FE8138!important;}
 .dx-btn-green{background: #33c45d;border-radius: 8upx;color: #fff;}
 .dx-btn-green-o{border: 2upx #33c45d solid;background: #fff;border-radius: 8upx;color: #33c45d;}
 
 
 /* 红色 */
-.dxi-btn-primary {color: #fff;background-color: #d30802!important;border-color: #d30802!important;}
-.dxi-btn-primary:focus,.dxi-btn-primary:hover {background: #d30802!important;border-color: #d30802!important;color:#fff}
+.dxi-btn-primary {color: #fff;background-color: #FE8138!important;border-color: #FE8138!important;}
+.dxi-btn-primary:focus,.dxi-btn-primary:hover {background: #FE8138!important;border-color: #FE8138!important;color:#fff}
 .dxi-btn-primary:active {outline: none}
-.dxi-tag{background-color: #d30802!important;border-color: #d30802!important;}
-.dxi-tag.is-hollow{background-color: #fff!important;border-color: rgba(211,8,2,0.8)!important;color: #d30802!important;}
+.dxi-tag{background-color: #FE8138!important;border-color: #FE8138!important;}
+.dxi-tag.is-hollow{background-color: #fff!important;border-color: rgba(211,8,2,0.8)!important;color: #FE8138!important;}
 
 
 /* 置顶搜索 */
@@ -162,7 +162,7 @@ button::after{border: 0;}
 #show_footer .right .rnavG{display: flex;padding: 20rpx 16rpx 20rpx 6rpx;width: 100%;}
 #show_footer .right .rnavG .item{width: 100%;margin: 0;height: 80rpx;font-size: 28rpx;color: #fff;line-height: 80rpx;}
 #show_footer .right .rnavG .item:first-child{background: linear-gradient(270deg,#de8a1d,#f7c264);border-radius: 40rpx 0 0 40rpx;}
-#show_footer .right .rnavG .item:last-child{background: #d30802;border-radius: 0 40rpx 40rpx 0;}
+#show_footer .right .rnavG .item:last-child{background: #FE8138;border-radius: 0 40rpx 40rpx 0;}
 
 
 /* 商品列表 */
@@ -264,7 +264,7 @@ button::after{border: 0;}
 
 
 /* 顶部 */
-.top-custom{background-color: #fff;width: 100%;z-index: 999;padding: 16rpx 0;}
+.top-custom{width: 100%;z-index: 999;padding: 16rpx 0;position: fixed;top: 0;left: 0;width: 100%;background-color: #FE8138;}
 .top-custom-box{display: flex;padding: 0 30rpx;align-items: center;}
 .top-custom-box .name{font-size: 36rpx;color: #000000;padding-right: 30rpx;}
 .top-custom-box .tsearch .lcity{padding: 0 30rpx 0 0!important;}

@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont';  /* Project id 1027217 */
-  src: url('//at.alicdn.com/t/font_1027217_n7fas1mbleb.woff2?t=1635816104274') format('woff2'),
-       url('//at.alicdn.com/t/font_1027217_n7fas1mbleb.woff?t=1635816104274') format('woff'),
-       url('//at.alicdn.com/t/font_1027217_n7fas1mbleb.ttf?t=1635816104274') format('truetype');
+  src: url('//at.alicdn.com/t/font_1027217_axscnqqh3rv.woff2?t=1648104810583') format('woff2'),
+       url('//at.alicdn.com/t/font_1027217_axscnqqh3rv.woff?t=1648104810583') format('woff'),
+       url('//at.alicdn.com/t/font_1027217_axscnqqh3rv.ttf?t=1648104810583') format('truetype');
 }
 /* 3314024140@qq.com  dx3229010  456在线 */
 
@@ -23,6 +23,7 @@
 .icon-vip:before{content: "\e656";}/* 皇冠 */
 .icon-tel2:before{content: "\e6b8";}/* 电话 */
 .icon-hongbao:before{content: "\e613";}/* 红包 */
+.icon-buy-tel:before{content: "\e609";}/*  */
 
 .icon-off:before{content: "\e6e0";}/* 删除 */
 .icon-search:before{content: "\e615";}/* 搜索 */

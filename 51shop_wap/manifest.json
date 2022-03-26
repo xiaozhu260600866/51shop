@@ -1,6 +1,6 @@
 {
     "name" : "51选到",
-    "appid" : "__UNI__B73D34F",
+    "appid" : "__UNI__0A9B911",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -64,7 +64,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxce8ef2a102fff93e",
+        "appid" : "wx4bfbc5e9b48d7f71",
         "setting" : {
             "urlCheck" : false,
             "minified" : true

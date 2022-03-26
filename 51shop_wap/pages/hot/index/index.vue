@@ -2,7 +2,8 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<div v-if="data.show">
-			<productLists :data="data" type="2"></productLists>
+			<!-- <productLists :data="data" isList></productLists> -->
+			<proLists :data="data.lists.data" isList></proLists>
 			<hasMore :parentData="data"></hasMore>
 		</div>
 		<selectCity ref="selectCity" title="请选择配送区域" :ruleform="ruleform" :townArr="townArr" :cityArr="cityArr" :provinceArr="provinceArr" :areaArr="areaArr" @callBack="cityCallBack"></selectCity>
@@ -12,8 +13,9 @@
 <script>
 	import productLists from "@/components/productLists";
 	import selectCity from "@/components/selectCity.vue"
+	import proLists from "@/components/proLists";
 	export default {
-		components: {productLists,selectCity},
+		components: {productLists,selectCity,proLists},
 		data() {
 			return {
 				formAction: '/shop/product/lists?is_hot=1&type=1',

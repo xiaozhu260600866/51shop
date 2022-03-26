@@ -17,24 +17,22 @@
 					<block v-else>
 						<view class="uinfo">
 							<view class="header-img">
-								<image class="img" :src="data.user.headerPic" />
+								<image class="img" :src="data.user.headimgurl" />
 							</view>
-							<view class="pl15 fc-white right info">
+							<view class="pl15 info">
 								<myform class="w-b100" :ruleform="ruleform" :vaildate="vaildate" :append="true" >
-									<view slot="content" class="fc-white lh-24 fs-15">
-										<view class="group">
-											<view>{{data.user.nickname}}</view>
-										</view>
-										<view v-if="data.user.userInfo.phone">电话号码：<text class="Arial">{{data.user.userInfo.phone}}</text></view>
+									<view slot="content" class="fc-white lh-1">
+										<view class="group fs-17">{{data.user.username?data.user.username:data.user.nickname}}</view>
+										<view class="Arial fs-16 mt8" v-if="data.user.userInfo.phone">{{data.user.userInfo.phone}}</view>
 										<view class="group" v-if="data.user.member_lev">
 											<view class="pr8"><text class="iconfont icon-vip fs-16"></text></view>
-											<view class="fs-14">{{data.user.member_lev}}</view>
+											<view class="fs-14">{{data.user.member_lev}}</view> 
 										</view>
 									</view>
 								</myform>
 							</view>
 						</view>
-						<view class="head-count user-count">
+						<!-- <view class="head-count user-count">
 							<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" @callBack="goto('/pages/user/integral/count/main',1)">
 								<view slot="content" class="c-item" >
 									<view class="num">{{data.integral}}</view>
@@ -59,20 +57,20 @@
 									<view class="name">浏览</view>
 								</view>
 							</myform>
-						</view>
+						</view> -->
 					</block>
 				</view>
 			</view>
 			
 			<view class="ugorup-box orderTab">
 				<dx-nav-class :data="[
-					{url:'/pages/order/lists/main?status=12&historyUrl=del',type: 1,cover:getSiteName+'/images/wap/order01.png',
+					{url:'/pages/order/lists/main?status=12&historyUrl=del',type: 2,cover:getSiteName+'/images/wap/order01.png',
 					name:'全部订单',number:data.orders3},
-					{url:'/pages/order/lists/main?historyUrl=del&status=1',type: 1,cover:getSiteName+'/images/wap/order02.png',
+					{url:'/pages/order/lists/main?historyUrl=del&status=1',type: 2,cover:getSiteName+'/images/wap/order02.png',
 					name:'待付款',number:data.orders1},
-					{url:'/pages/order/lists/main?historyUrl=del&status=5',type: 1,cover:getSiteName+'/images/wap/order03.png',
+					{url:'/pages/order/lists/main?historyUrl=del&status=5',type: 2,cover:getSiteName+'/images/wap/order03.png',
 					name:'未完成',number:data.orders5},
-					{url:'/pages/order/service/main?historyUrl=del&status=10',type: 1,cover:getSiteName+'/images/wap/order04.png',
+					{url:'/pages/order/service/main?historyUrl=del&status=10',type: 2,cover:getSiteName+'/images/wap/order04.png',
 					name:'售后',number:data.orders10}
 				]" @click="checkAuth" :tbPadding="10" :num="4" :imgWidth="24" :imgHeight="24" :imgR="0" :nameSize="13" :namePTop="8"></dx-nav-class>
 			</view>

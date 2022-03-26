@@ -1,98 +1,57 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<div v-if="data.show">
-			<div class="list-class bd-b bg-f">
-				<p :class="['nav-tab',data.query.status == 12 ? 'selected' :'']" @click="changeStatus(12)">全部</p>
-				<p :class="['nav-tab',data.query.status == 1 ? 'selected' :'']" @click="changeStatus(1)">待付款</p>
-				<p :class="['nav-tab',data.query.status == 3 ? 'selected' :'']" @click="changeStatus(3)">待发货</p>
-				<p :class="['nav-tab',data.query.status == 5 ? 'selected' :'']" @click="changeStatus(5)">待收货</p>
-				<p :class="['nav-tab',data.query.status == 9 ? 'selected' :'']" @click="changeStatus(9)">待评价</p>
-				<!-- <p :class="['nav-tab',status == 10 ? 'selected' :'']" @click="changeStatus(10)">售后</p> -->
-			</div>
-			<div class="pro_info order-sec m10" v-for="(parent,key) in data.lists.data">
-				<div class="order_date plr10 bd-be">
-					<view class="time fs-14">
-						<span>下单日期：</span>
-						<span class="Arial">{{parent.created_at}}</span>
+		<view class="pb10" v-if="data.show">
+			<!-- <view class="list-class bd-b bg-f">
+				<view :class="['nav-tab',data.query.status == 12 ? 'selected' :'']" @click="changeStatus(12)">全部</view>
+				<view :class="['nav-tab',data.query.status == 1 ? 'selected' :'']" @click="changeStatus(1)">待付款</view>
+				<view :class="['nav-tab',data.query.status == 3 ? 'selected' :'']" @click="changeStatus(3)">待发货</view>
+				<view :class="['nav-tab',data.query.status == 5 ? 'selected' :'']" @click="changeStatus(5)">待收货</view>
+				<view :class="['nav-tab',data.query.status == 9 ? 'selected' :'']" @click="changeStatus(9)">待评价</view>
+				<view :class="['nav-tab',status == 10 ? 'selected' :'']" @click="changeStatus(10)">售后</view>
+			</view> -->
+			
+			<dx-tabs :tabs="[
+				{value: 12,name: '全部'},
+				{value: 1,name: '待付款'},
+				{value: 3,name: '待发货'},
+				{value: 5,name: '待收货'},
+				{value: 9,name: '待评价'},
+			]"  v-model="data.query.status" @change="change" :height="100" :size="32" :selectedSize="32" selectedColor="#FC4A26" sliderBgColor="#FC4A26"></dx-tabs>
+			<view class="pro_info" v-for="(parent,key) in data.lists.data">
+				<view class="order_date fs-15">
+					<view class="time">
+						<text>订单号：</text>
+						<text class="Arial">{{parent.order_no}}</text>
 					</view>
-					<div class="state">
-						<p class="fc-red fs-14 pr8">{{parent.status_message}}</p>
-					</div>
-				</div>
+					<view class="state fc-red pr8">{{parent.status_message}}</view>
+				</view>
 				
-				<div @click="goto(parent.status ==1?'/pages/order/buy/main?order_no='+parent.order_no:'/pages/order/buy/detail?order_no='+parent.order_no,1)">
+				<view @click="goto(parent.status ==1?'/pages/order/buy/main?order_no='+parent.order_no:'/pages/order/buy/detail?order_no='+parent.order_no,1)">
 					<orderPro :data="parent.products"></orderPro>
-				</div>
+				</view>
 				
-				<div class="order_count fs-15 plr10">共
-					<span class="Arial">{{parent.num}}</span>件商品 付款金额：
-					<span class="price fc-3">￥{{ (parseFloat(parent.amount)  +  parseFloat(parent.yunfei)) - parseFloat(parent.payed_amount)}}</span>
-				</div>
-				<div class="plr10 pb8 flex" v-if="parent.merchantName">
-					<p class="fs-15">自提点：</p>
-					<p class="fs-15 flex1" @click="location(parent.merchantName.location_x,parent.merchantName.location_y,parent.merchantName.company_name)">
-						{{parent.merchantName.company_name}} - {{parent.merchantName.address}}
-					</p>
-				</div>
-				<!-- <div class="weui-cell bd-te pro-qrcode" @click="previewImage(parent.order_no+'.png','order')" >
-					<div class="weui-cell__hd">
-						<div class="weui-label fs-15">订单号/核销号</div>
-					</div>
-					<div class="weui-cell__bd text-right"></div>
-					<div class="weui-cell__ft flex">
-						<p class="fs-15 fc-3 Arial lh-24">{{parent.order_no}}</p>
-						<img :src="getSiteName+'/upload/images/order/'+parent.order_no+'.png'" style="width:20px;height:20px">
-						<div class="iconfont icon-right fs-12 fc-9 lh-24"></div>
-					</div>
-				</div> -->
-				<div class="btn-group ptb8 plr10 bd-te">
-					<!-- 待支付 -->
-					<div class="btn-item" v-if="parent.status ==1">
-						<div class="btn-nav" @click="changeOrder(parent)">取消订单</div>
-						<div class="btn-nav" @click="goto('/pages/order/buy/main?order_no='+parent.order_no,1)">去支付</div>
-					</div>
-					<!-- 待发货 -->
-					<div class="btn-item" v-if="parent.status == 3">
-						<!-- <div class="btn-nav" @click="changeOrder(parent)">申请退款</div> -->
-						<button hover-class="none" class="btn-nav" openType="contact">联系客服</button>
-						<div class="btn-nav" v-if="parent.wechat_card_id && parent.coupon_value == '0.00' && parent.give_wechatCard == 0" @click="goto('/pages/order/payed/main?order_no='+parent.order_no,1)">微信卡券</div>
-						<div class="btn-nav" @click="goto('/pages/order/buy/detail?order_no='+parent.order_no,1)">查看详情</div>
-					</div>
-					<!-- 待收货 -->
-					<div class="btn-item" v-if="parent.status == 5">
-						<button hover-class="none" class="btn-nav" openType="contact">联系客服</button>
-						<div class="btn-nav" @click="goto('/pages/order/map/main?order_no='+parent.order_no,1)">配送员位置</div>
-						<div class="btn-nav" v-if="parent.wechat_card_id && parent.coupon_value == '0.00' && parent.give_wechatCard == 0" @click="goto('/pages/order/payed/main?order_no='+parent.order_no,1)">微信卡券</div>
-						<div class="btn-nav" @click="goto('/pages/order/buy/detail?order_no='+parent.order_no,1)">确认收货</div>
-					</div>
-					<!-- 待评价 -->
-					<div class="btn-item" v-if="parent.status == 9">
-						<button hover-class="none" class="btn-nav" openType="contact">联系客服</button>
-						<div class="btn-nav" v-if="parent.wechat_card_id && parent.coupon_value == '0.00' && parent.give_wechatCard == 0" @click="goto('/pages/order/payed/main?order_no='+parent.order_no,1)">微信卡券</div>
-						<div class="btn-nav" @click="goto('/pages/order/evaluate/main?order_no='+parent.order_no,1)">{{parent.suggestStatus == 0 ? '去评价' : '已评价'}}</div>
-					</div>
-					<!-- 售后中 -->
-					<div class="btn-item" v-if="parent.status == 10">
-						<div class="btn-nav" v-if="parent.wechat_card_id && parent.coupon_value == '0.00' && parent.give_wechatCard == 0" @click="goto('/pages/order/payed/main?order_no='+parent.order_no,1)">微信卡券</div>
-					<!-- 	<div class="btn-nav obtn" @click="goto('/pages/order/after-sale/main?order_no='+parent.order_no,1)">售后详情</div> -->
-					</div>
-					<!-- <div class="btn-item" v-if="parent.shipping == 1">
-						<div class="btn-nav" @click="previewImage(parent.order_no+'.png','order')">自提码</div>
-					</div> -->
-				</div>
-			</div>
+				<view class="order_count lh-1 flex-baseline">
+					<text class="fs-12 fc-9 pr5">实付款</text>
+					<text class="num fc-1 fs-16 fw-bold">￥</text>
+					<text class="num fc-1 fs-20 fw-bold">{{ (parseFloat(parent.amount)  +  parseFloat(parent.yunfei)) - parseFloat(parent.payed_amount)}}</text>
+				</view>
+				<view class="btn-group pb12 mt8">
+					<view class="btn-item">
+						<view class="btn-nav obtn" @click="goto('/pages/order/buy/detail?order_no='+parent.order_no,1)">查看详情</view>
+					</view>
+				</view>
+			</view>
 			<hasMore :parentData="data" source="order"></hasMore>
-		</div>
+		</view>
 	</view>
 </template>
 
 <script>
 	import orderPro from "@/components/orderPro";
+	import dxTabs from "doxinui/components/tabs/tabs"
 	export default {
-		components:{
-			orderPro
-		},
+		components:{orderPro,dxTabs},
 		data() {
 			return {
 				formAction: '/shop/user/order-lists',
@@ -151,8 +110,13 @@
 				this.data.nextPage = 1;
 				this.ajax();
 			},
+			
+			change() {
+				this.data.nextPage = 1;
+				this.ajax();
+			},
 			ajax() {
-				this.getAjax(this).then(msg => {
+				this.getAjax(this,{status:this.status}).then(msg => {
 					console.log(this.data);
 				});
 			}

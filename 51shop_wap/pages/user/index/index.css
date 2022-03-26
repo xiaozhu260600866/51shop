@@ -7,10 +7,10 @@
 /* 头部 */
 .head-info{position: relative;}
 .head-bg .img{width: 100%;display: flex;}
-.utop{padding: 60rpx 30rpx 130rpx;}
+.utop{padding: 80rpx 40rpx 180rpx;}
 .utop .uinfo{display: flex;align-items: center;}
 .utop .uinfo .header-img .img{width: 120rpx;height: 120rpx;border-radius: 50%;border: 4rpx #fff solid;display: flex;}
-.utop .uinfo .info{line-height: 44rpx;flex: 1;overflow: hidden;}
+.utop .uinfo .info{flex: 1;overflow: hidden;}
 .utop .uinfo .info .group{display: flex;align-items: center;}
 .utop .r-nav .up-nav{border: 1rpx #fff solid;padding: 0 24rpx;border-radius: 30rpx;height: 56rpx;line-height: 54rpx;color: #fff;text-align: center;margin: 16rpx 0;}
 .utop .uinfo .gosign{height: 60rpx;line-height: 60rpx;border: 1rpx #fff solid;border-radius: 40rpx;text-align: center;padding: 0 30rpx;}
@@ -30,7 +30,7 @@
 
 
 /* 订单块 */
-.orderTab{position: relative;z-index: 1;margin-top: -130rpx;}
+.orderTab{position: relative;z-index: 1;margin-top: -90rpx;}
 
 
 /* 常用功能 */

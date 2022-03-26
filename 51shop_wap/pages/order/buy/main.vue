@@ -40,7 +40,7 @@
 					</view>
 				</view>
 				<view class="block-sec">
-					<orderPro :data="ruleform.products" url="/pages/product/show/main?id="></orderPro>
+					<orderPro :data="ruleform.products" myclass="plr15" url="/pages/product/show/main?id=" isBuy></orderPro>
 				</view>
 				<view class="block-sec write" v-if="ruleform.shipping == 1">
 					<view class="plr15 pt20 pb10 lh-1 fs-17 fc-0">联系信息</view>

@@ -369,7 +369,10 @@
 			"path": "pages/order/payed/main",
 			"style": {
 				"navigationBarTitleText": "支付结果",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"h5":{
+					"navigationStyle":"custom"
+				}
 			}
 		},
 		{
@@ -443,7 +446,8 @@
 			"path": "pages/order/lists/main",
 			"style": {
 				"navigationBarTitleText": "我的订单",
-				"enablePullDownRefresh": true
+				"enablePullDownRefresh": true,
+				"navigationStyle":"custom"
 			}
 		},
 		{
@@ -575,13 +579,18 @@
 		"list": [{
 			"pagePath": "pages/index/main",
 			"text": "首页",
-			"iconPath": "static/image/A01.png",
-			"selectedIconPath": "static/image/A02.png"
+			"iconPath": "static/home01.png",
+			"selectedIconPath": "static/home02.png"
+		},{
+			"pagePath": "pages/order/lists/main",
+			"text": "订单",
+			"iconPath": "static/order01.png",
+			"selectedIconPath": "static/order02.png"
 		},{
 			"pagePath": "pages/user/index/main",
 			"text": "我的",
-			"iconPath": "static/image/D01.png",
-			"selectedIconPath": "static/image/D02.png"
+			"iconPath": "static/user01.png",
+			"selectedIconPath": "static/user02.png"
 		}]
 	},
 	"globalStyle": {
